@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:remood/app/core/values/app_colors.dart';
 import 'package:remood/app/core/values/assets_images.dart';
+import 'package:remood/app/modules/home/home_controller.dart';
+import 'package:remood/app/modules/read_diary/read_diary_controller.dart';
+import 'package:remood/app/modules/report/report_controller.dart';
+import 'package:remood/app/modules/setting/setting_binding.dart';
+import 'package:remood/app/modules/setting/setting_controller.dart';
 import 'package:remood/app/routes/app_routes.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -20,12 +25,17 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
       const Duration(seconds: 2),
-      () => Get.toNamed(AppRoutes.home),
+      () => Get.toNamed(AppRoutes.onboarding),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    Get.find<HomeController>();
+    Get.find<ReadDiaryController>();
+    Get.find<ReportController>();
+    Get.find<SettingController>();
+
     return Scaffold(
       backgroundColor: AppColors.backgroundPage,
       body: Center(
