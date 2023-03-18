@@ -12,7 +12,6 @@ class MinutePicker extends StatelessWidget {
   }) : super(key: key);
 
   final controller = Get.find<SettingController>();
-  double itemExtent = 40;
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +20,7 @@ class MinutePicker extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            log('minute--');
-            controller.minuteController.animateTo(
-              controller.minuteController.offset - itemExtent,
-              duration: const Duration(milliseconds: 80),
-              curve: Curves.easeInOut,
-            );
+            log('minute++');
           },
           child: Padding(
             padding: const EdgeInsets.all(6.0),
@@ -37,9 +31,10 @@ class MinutePicker extends StatelessWidget {
           height: 47,
           width: 36,
           child: ListWheelScrollView.useDelegate(
-            controller: controller.minuteController,
-            onSelectedItemChanged: (value) {},
-            itemExtent: itemExtent,
+            onSelectedItemChanged: (value) {
+              controller.updateMinute(value);
+            },
+            itemExtent: 40,
             perspective: 0.005,
             physics: const FixedExtentScrollPhysics(),
             childDelegate: ListWheelChildBuilderDelegate(
@@ -54,12 +49,7 @@ class MinutePicker extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            log('minute++');
-            controller.minuteController.animateTo(
-              controller.minuteController.offset + itemExtent,
-              duration: const Duration(milliseconds: 80),
-              curve: Curves.easeInOut,
-            );
+            log('minute--');
           },
           child: Padding(
             padding: const EdgeInsets.all(6.0),

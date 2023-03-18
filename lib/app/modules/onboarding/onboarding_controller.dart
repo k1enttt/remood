@@ -57,7 +57,7 @@ class OnboardingController extends GetxController {
         Onboarding(
             background: Assets.onboardingBackground,
             image: "",
-            title: "Setting notification time",
+            title: "",
             content: "This is time setting screen"),
       ];
 

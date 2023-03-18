@@ -9,7 +9,6 @@ class AmpmPicker extends StatelessWidget {
   }) : super(key: key);
 
   final controller = Get.find<SettingController>();
-  double itemExtent = 40;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +16,10 @@ class AmpmPicker extends StatelessWidget {
       height: 47,
       width: 36,
       child: ListWheelScrollView.useDelegate(
-        controller: controller.ampmController,
-        onSelectedItemChanged: (value) {},
-        itemExtent: itemExtent,
+        onSelectedItemChanged: (value) {
+          controller.updateAmPm(value);
+        },
+        itemExtent: 40,
         perspective: 0.005,
         physics: const FixedExtentScrollPhysics(),
         childDelegate: ListWheelChildBuilderDelegate(

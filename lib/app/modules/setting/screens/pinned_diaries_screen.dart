@@ -16,12 +16,6 @@ class PinnedDiariesScreen extends StatelessWidget {
             StackSettingAppbar(
               title: appBarTitle,
             ),
-
-            // Nút filter positive & negative diary
-
-            // Danh sách positive & negative diary
-
-            // Ghim diary
           ],
         ),
       ),
