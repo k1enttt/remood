@@ -4,7 +4,7 @@ import 'package:remood/app/core/values/app_colors.dart';
 import 'package:remood/app/data/models/list_topic.dart';
 import 'package:remood/app/modules/write_diary/diary_controller.dart';
 import 'package:remood/app/modules/write_diary/widgets/bottom_sheet_add_topic.dart';
-import 'package:remood/app/global_widgets/card_topic.dart';
+import 'package:remood/app/modules/write_diary/widgets/card_topic.dart';
 
 class StackTopic extends StatelessWidget {
   const StackTopic({super.key});
@@ -23,7 +23,7 @@ class StackTopic extends StatelessWidget {
           height: _screenHeight * 0.115,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: AppColors.Primary)),
+              border: Border.all(color: AppColors.primary)),
           child: Padding(
             padding: EdgeInsets.only(
               top: _screenHeight * 0.038,
@@ -36,31 +36,22 @@ class StackTopic extends StatelessWidget {
 // list topic
                 SizedBox(
                   width: _screenWidth * 0.44,
-                  child: Obx(
-                    () => ListView.separated(
-                      physics: const BouncingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: ((context, index) => GestureDetector(
-                            onTap: () {
-                              topicController.changeTopic(index);
-                              topicController.iconTopic.value =
-                                  ListTopic.topics[index].icons;
-                              topicController.colorDiary.value =
-                                  ListTopic.topics[index].TopicColor;
-                              topicController.titleDiary.value =
-                                  ListTopic.topics[index].title;
-                            },
-                            child: TopicCard(
-                              topic: topicController.listTopic[index],
-                              index: index,
-                              currentIndex: topicController.currentTopic,
-                            ),
-                          )),
-                      separatorBuilder: ((context, index) => SizedBox(
-                            width: _screenWidth * 0.024,
-                          )),
-                      itemCount: topicController.listTopic.length,
-                    ),
+                  child: ListView.separated(
+                    physics: const BouncingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: ((context, index) => GestureDetector(
+                          onTap: () {
+                            topicController.changeTopic(index);
+                          },
+                          child: TopicCard(
+                            topic: _ListTopics.topics[index],
+                            index: index,
+                          ),
+                        )),
+                    separatorBuilder: ((context, index) => SizedBox(
+                          width: _screenWidth * 0.024,
+                        )),
+                    itemCount: _ListTopics.topics.length,
                   ),
                 ),
                 SizedBox(
@@ -82,13 +73,13 @@ class StackTopic extends StatelessWidget {
                           height: _screenHeight * 0.043,
                           width: _screenWidth * 0.093,
                           decoration: BoxDecoration(
-                            color: AppColors.Primary13,
+                            color: AppColors.primary13,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: const Center(
                             child: Icon(
                               Icons.add,
-                              color: AppColors.BackgroundColor,
+                              color: AppColors.backgroundColor,
                               size: 19,
                             ),
                           ),
@@ -111,14 +102,14 @@ class StackTopic extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: AppColors.Primary),
+              border: Border.all(color: AppColors.primary),
             ),
             child: const Center(
                 child: Text(
               'Topic',
               style: TextStyle(
                   fontWeight: FontWeight.w700,
-                  color: AppColors.Primary,
+                  color: AppColors.primary,
                   fontSize: 18),
             )),
           ),

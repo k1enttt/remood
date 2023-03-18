@@ -81,12 +81,12 @@ class SheetReadDiaryFreshmood extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(40),
                     border: Border.all(
-                        color: AppColors.Grey22.withOpacity(1), width: 1),
+                        color: AppColors.grey22.withOpacity(1), width: 1),
                   ),
                   child: Center(
                       child: Text(
                     tag,
-                    style: TextStyle(color: AppColors.Grey22.withOpacity(1)),
+                    style: TextStyle(color: AppColors.grey22.withOpacity(1)),
                   )),
                 )
               ],
