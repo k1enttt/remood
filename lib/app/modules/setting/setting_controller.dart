@@ -9,6 +9,8 @@ import 'package:remood/app/data/models/language.dart';
 import 'package:remood/app/data/models/list_topic.dart';
 import 'package:remood/app/data/models/setting_button.dart';
 import 'package:remood/app/data/models/topic.dart';
+import 'package:remood/app/data/models/topic_button.dart';
+import 'package:remood/app/modules/setting/screens/mt_topic_detail_screen.dart';
 import 'package:remood/app/routes/app_routes.dart';
 
 class SettingController extends GetxController {
@@ -16,34 +18,34 @@ class SettingController extends GetxController {
   List<SettingButton> settingList = [
     SettingButton(
       icon: Assets.calendar,
-      title: "Start of the week",
+      label: "Start of the week",
       screen: AppRoutes.starOfTheWeek,
     ),
     SettingButton(
-        icon: Assets.language, title: "Language", screen: AppRoutes.language),
+        icon: Assets.language, label: "Language", screen: AppRoutes.language),
     SettingButton(
       icon: Assets.notification,
-      title: "Notification",
+      label: "Notification",
       screen: AppRoutes.notification,
     ),
     SettingButton(
       icon: Assets.dangerCircle,
-      title: "Privacy",
+      label: "Privacy",
       screen: AppRoutes.privacy,
     ),
     SettingButton(
       icon: Assets.category,
-      title: "Manage topics",
+      label: "Manage topics",
       screen: AppRoutes.manageTopics,
     ),
     SettingButton(
       icon: Assets.category,
-      title: "Pinned diaries",
+      label: "Pinned diaries",
       screen: AppRoutes.pinnedDiaries,
     ),
     SettingButton(
       icon: Assets.password,
-      title: "Security",
+      label: "Security",
       screen: AppRoutes.security,
     ),
   ];
@@ -51,55 +53,74 @@ class SettingController extends GetxController {
   List<SettingButton> helpList = [
     SettingButton(
       icon: Assets.call,
-      title: "Contact Us",
+      label: "Contact Us",
       screen: AppRoutes.contactUs,
     ),
     SettingButton(
       icon: Assets.document,
-      title: "FAQ",
+      label: "FAQ",
       screen: AppRoutes.faq,
     ),
   ];
 
-  List<SettingButton> topicList = [
-    SettingButton(
+  var settingLabelStyle = CustomTextStyle.normalText(Colors.black);
+
+  // Manage topics
+  // TODO: Thêm screen cho các topic
+  Rx<TopicButton> currentTopic = TopicButton(
+    icon: CardTopic(
+      title: "",
+      TopicColor: AppColors.lightGreen18.value,
+      icons: Icons.work.codePoint,
+    ),
+    label: "Work",
+  ).obs;
+
+  List<TopicButton> topicList = [
+    TopicButton(
       icon: CardTopic(
         title: "",
         TopicColor: AppColors.lightGreen18.value,
         icons: Icons.work.codePoint,
       ),
-      title: "Work",
-      screen: null,
+      label: "Work",
     ),
-    SettingButton(
+    TopicButton(
       icon: CardTopic(
         title: "",
         TopicColor: AppColors.lightRed22.value,
         icons: Icons.favorite.codePoint,
       ),
-      title: "Love",
-      screen: null,
+      label: "Love",
     ),
-    SettingButton(
+    TopicButton(
       icon: CardTopic(
         title: "",
         TopicColor: AppColors.lightOrange27.value,
         icons: Icons.group.codePoint,
       ),
-      title: "Friends",
-      screen: null,
+      label: "Friends",
     ),
-    SettingButton(
+    TopicButton(
       icon: CardTopic(
         title: "",
         TopicColor: AppColors.lightPurple22.value,
         icons: Icons.family_restroom.codePoint,
       ),
-      title: "Family",
-      screen: null,
+      label: "Family",
     ),
   ];
-  var settingLabelStyle = CustomTextStyle.normalText(Colors.black);
+
+  List<TopicButton> createNewTopic = [
+    TopicButton(
+      icon: CardTopic(
+        title: "",
+        TopicColor: AppColors.grey22.value,
+        icons: Icons.add.codePoint,
+      ),
+      label: "Create new topic",
+    ),
+  ];
 
   // First day of the week
   RxBool isSunday = true.obs;
