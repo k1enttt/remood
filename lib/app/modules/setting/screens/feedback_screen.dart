@@ -31,7 +31,8 @@ class FeedbackScreen extends StatelessWidget {
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://flutter.dev'));
+      ..loadRequest(Uri.parse(
+          'https://docs.google.com/forms/d/e/1FAIpQLSeSNcsUfjqMWFAVidx6d0oc_CvNK6hxmHSpEmdV9MGFGG6UjA/viewform?usp=pp_url'));
     return Obx(
       () => Scaffold(
         appBar: AppBar(
