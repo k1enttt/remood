@@ -42,18 +42,15 @@ class SheetReadDiary extends StatelessWidget {
               children: [
                 // Icon
                 Icon(
-                  IconData(
-                    id == 0
-                        ? readDiaryController
-                            .positiveDiaryList[
-                                readDiaryController.currentDiary.value]
-                            .icon
-                        : readDiaryController
-                            .negativeDiaryList[
-                                readDiaryController.currentDiary.value]
-                            .icon,
-                    fontFamily: 'MaterialIcons',
-                  ),
+                  IconData(id == 0
+                      ? readDiaryController
+                          .positiveDiaryList[
+                              readDiaryController.currentDiary.value]
+                          .icon
+                      : readDiaryController
+                          .negativeDiaryList[
+                              readDiaryController.currentDiary.value]
+                          .icon),
                   color: id == 0
                       ? Color(readDiaryController
                               .positiveDiaryList[
@@ -85,7 +82,7 @@ class SheetReadDiary extends StatelessWidget {
                       fontWeight: FontWeight.w600, fontSize: 20),
                 ),
                 const SizedBox(
-                  width: 15,
+                  width: 20,
                 ),
                 // tag
                 Container(
@@ -103,7 +100,7 @@ class SheetReadDiary extends StatelessWidget {
                   )),
                 ),
                 const SizedBox(
-                  width: 0,
+                  width: 5,
                 ),
                 // edit
                 IconButton(
@@ -196,11 +193,11 @@ class SheetReadDiary extends StatelessWidget {
             height: _screenHeight * 0.34,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              color: id == 0
-                  ? Color(readDiaryController
+              color: Color(id == 0
+                  ? readDiaryController
                       .positiveDiaryList[readDiaryController.currentDiary.value]
-                      .diaryColor)
-                  : Color(readDiaryController
+                      .diaryColor
+                  : readDiaryController
                       .negativeDiaryList[readDiaryController.currentDiary.value]
                       .diaryColor),
             ),
