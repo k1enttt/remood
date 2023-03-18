@@ -19,7 +19,6 @@ class OnboardingContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final onboardingController = Get.find<OnboardingController>();
-    final settingController = Get.put(SettingController());
     var boxDecoration = BoxDecoration(
       boxShadow: const [
         BoxShadow(
@@ -33,7 +32,9 @@ class OnboardingContent extends StatelessWidget {
     );
     return Container(
       decoration: OnboardingDecoration.imageBackround(
-          onboardingController.contents[index].background),
+        onboardingController.pageIndex,
+        onboardingController.contents[index].background,
+      ),
       padding: onboardingController.isLastView(index)
           ? const EdgeInsets.all(0.0)
           : const EdgeInsets.all(30.0),
