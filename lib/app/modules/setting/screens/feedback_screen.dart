@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:remood/app/core/utils/utils.dart';
 import 'package:remood/app/core/values/app_colors.dart';
 import 'package:remood/app/core/values/text_style.dart';
 import 'package:remood/app/modules/setting/widgets/back_button_feedback.dart';
+import 'package:remood/app/modules/setting/widgets/container_no_internet.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class FeedbackScreen extends StatelessWidget {
@@ -29,16 +32,20 @@ class FeedbackScreen extends StatelessWidget {
         ),
       )
       ..loadRequest(Uri.parse('https://flutter.dev'));
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.backgroundPage,
-        title: Text("Feedback", style: CustomTextStyle.h2(Colors.black)),
-        centerTitle: true,
-        leading: const BackButtonFeedback(),
-        leadingWidth: 86,
-        toolbarHeight: 78,
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppColors.backgroundPage,
+          title: Text("Feedback", style: CustomTextStyle.h2(Colors.black)),
+          centerTitle: true,
+          leading: const BackButtonFeedback(),
+          leadingWidth: 86,
+          toolbarHeight: 78,
+        ),
+        body: (Utils.isInternetConnected.value == true)
+            ? WebViewWidget(controller: controller)
+            : const ContainerNoInternet(),
       ),
-      body: WebViewWidget(controller: controller),
     );
   }
 }
