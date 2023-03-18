@@ -2,11 +2,9 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:remood/app/core/values/app_colors.dart';
 import 'package:remood/app/core/values/text_style.dart';
-import 'package:remood/app/data/models/report_controller.dart';
 import 'package:remood/app/data/models/report_point.dart';
 import 'package:remood/app/modules/home/home_controller.dart';
 import 'package:remood/app/modules/report/report_controller.dart';
