@@ -30,15 +30,15 @@ class TopicCard extends StatelessWidget {
               width: _screenWidth * 0.093,
               decoration: BoxDecoration(
                 color: currentTopicIndex.currentTopic.value == index
-                    ? topic.TopicColor
+                    ? Color(topic.TopicColor)
                     : AppColors.grey22,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Center(
                 child: Icon(
-                  topic.icons,
+                  IconData(topic.icons),
                   color: currentTopicIndex.currentTopic.value == index
-                      ? topic.TopicColor.withOpacity(1)
+                      ? Color(topic.TopicColor).withOpacity(1)
                       : AppColors.darkBlue,
                   size: 19,
                 ),

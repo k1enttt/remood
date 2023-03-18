@@ -33,7 +33,6 @@ class ChangeColorTopicScreen extends StatelessWidget {
             ),
 
 // Color list
-            // TODO: Change to current topic color
             SizedBox(
               width: screenWidth * 0.89,
               height: screenHeight * 0.13,
@@ -71,7 +70,12 @@ class ChangeColorTopicScreen extends StatelessWidget {
             ),
 
 // Save button
-            const ConfirmButton(label: "Save"),
+// TODO: ----Stuck---- Change-color function
+// Parent page does not update when Get.back()
+            ConfirmButton(
+              label: "Save",
+              func: controller.changeTopicColorSetting,
+            ),
             SizedBox(
               height: screenHeight * 0.03,
             ),

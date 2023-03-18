@@ -37,7 +37,6 @@ class ChangeIconTopicScreen extends StatelessWidget {
             ),
 
 // Icon list
-// TODO: Change to current topic icon
             SizedBox(
               width: screenWidth * 0.89,
               height: screenHeight * 0.13,
@@ -53,6 +52,10 @@ class ChangeIconTopicScreen extends StatelessWidget {
                     onTap: (() {
                       diaryController.changeIconTopic(
                           index, listSelectedIcons.selectedIcons[index]);
+
+                      // ? TODO: Khởi tạo màu cho currentIconTopic (int - số thứ tự) là màu của currentTopic.icons (int - số codePoint)
+                      // currentTopic.icons =
+                      //     listSelectedIcons.selectedIcons[index].codePoint;
                     }),
                     child: Obx(
                       () => Container(
@@ -81,7 +84,12 @@ class ChangeIconTopicScreen extends StatelessWidget {
             ),
 
 // Save button
-            const ConfirmButton(label: "Save"),
+// TODO: ----Stuck----- Change-icon function
+// Parent page does not update when Get.back()
+            ConfirmButton(
+              label: "Save",
+              func: diaryController.changeTopicIconSetting,
+            ),
             SizedBox(
               height: screenHeight * 0.03,
             ),

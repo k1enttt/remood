@@ -1,12 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:remood/app/core/values/app_colors.dart';
 import 'package:remood/app/core/values/text_style.dart';
+import 'package:remood/app/data/models/list_topic.dart';
 import 'package:remood/app/data/models/topic.dart';
 import 'package:remood/app/modules/setting/screens/mt_create_new_topic_screen.dart';
 import 'package:remood/app/modules/setting/setting_controller.dart';
 import 'package:remood/app/modules/setting/widgets/confirm_button.dart';
 import 'package:remood/app/modules/setting/widgets/stack_setting_appbar.dart';
+import 'package:remood/app/modules/write_diary/diary_controller.dart';
 import 'package:remood/app/routes/app_routes.dart';
 
 class TopicDetailScreen extends StatelessWidget {
@@ -16,12 +20,16 @@ class TopicDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SettingController controller = Get.find();
+    final SettingController settingController = Get.find();
+    final DiaryController diaryController = Get.find();
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    String appBarTitle = controller.currentTopic.value.title;
-    CardTopic currentTopic = controller.currentTopic.value;
+    String appBarTitle = settingController.currentTopic.value.title;
+    Rx<CardTopic> currentTopic = settingController.currentTopic;
     double widthValueBox = screenWidth * 0.1;
+
+    // ? TODO: Tại sao lại gán cho biến mới
+    ListTopic listTopic = ListTopic();
 
     return Scaffold(
       backgroundColor: AppColors.backgroundPage,
@@ -33,13 +41,21 @@ class TopicDetailScreen extends StatelessWidget {
                 StackSettingAppbar(
                   title: appBarTitle,
                 ),
-                Container(
-                  padding: EdgeInsets.only(
-                    top: screenHeight * 0.033,
-                    right: screenWidth * 0.053,
+// Delete button
+                GestureDetector(
+                  onTap: () {
+                    listTopic.deleteTopic(settingController.currentTopic.value);
+                    log(listTopic.toString());
+                    Get.back();
+                  },
+                  child: Container(
+                    padding: EdgeInsets.only(
+                      top: screenHeight * 0.033,
+                      right: screenWidth * 0.053,
+                    ),
+                    alignment: Alignment.topRight,
+                    child: const Icon(Icons.delete_outline),
                   ),
-                  alignment: Alignment.topRight,
-                  child: const Icon(Icons.delete_outline),
                 ),
               ],
             ),
@@ -48,7 +64,17 @@ class TopicDetailScreen extends StatelessWidget {
             ),
 // Rename
             GestureDetector(
-              onTap: () => Get.toNamed(AppRoutes.renameTopic),
+              onTap: () {
+                // Switch actionIndex to Rename topic action
+                settingController.actionIndex = 0;
+
+                /// Change the text in textEditingController to the current topic's title,
+                /// if not, the text in text field will be keep even when you change the topic.
+                diaryController.topicName.text = currentTopic.value.title;
+
+                // Navigate to rename screen
+                Get.toNamed(AppRoutes.renameTopic);
+              },
               child: Container(
                 width: screenWidth,
                 padding: const EdgeInsets.only(
@@ -70,9 +96,10 @@ class TopicDetailScreen extends StatelessWidget {
                         children: [
                           // Value
                           Text(
-                            currentTopic.title,
+                            currentTopic.value.title,
                             style: CustomTextStyle.normalText(
-                              Color(controller.currentTopic.value.TopicColor)
+                              Color(settingController
+                                      .currentTopic.value.TopicColor)
                                   .withOpacity(1),
                             ),
                           ),
@@ -93,7 +120,13 @@ class TopicDetailScreen extends StatelessWidget {
             ),
 // Change icon
             GestureDetector(
-              onTap: () => Get.toNamed(AppRoutes.changeIconTopic),
+              onTap: () {
+                // Switch actionIndex to Change-topic-icon action
+                settingController.actionIndex = 1;
+
+                // Navigate to Change-topic-icon screen
+                Get.toNamed(AppRoutes.changeIconTopic);
+              },
               child: Container(
                 width: screenWidth,
                 padding: const EdgeInsets.only(
@@ -117,10 +150,10 @@ class TopicDetailScreen extends StatelessWidget {
                           SizedBox(
                             width: widthValueBox,
                             child: Icon(
-                              IconData(currentTopic.icons,
+                              IconData(currentTopic.value.icons,
                                   fontFamily: "MaterialIcons"),
-                              color:
-                                  Color(currentTopic.TopicColor).withOpacity(1),
+                              color: Color(currentTopic.value.TopicColor)
+                                  .withOpacity(1),
                             ),
                           ),
 
@@ -138,7 +171,10 @@ class TopicDetailScreen extends StatelessWidget {
             ),
 // Change color
             GestureDetector(
-              onTap: () => Get.toNamed(AppRoutes.changeColorTopic),
+              onTap: () {
+                // Navigate to Change-topic-color screen
+                Get.toNamed(AppRoutes.changeColorTopic);
+              },
               child: Container(
                 width: screenWidth,
                 padding: const EdgeInsets.only(
@@ -165,7 +201,7 @@ class TopicDetailScreen extends StatelessWidget {
                             height: screenHeight * 0.024,
                             width: screenWidth * 0.053,
                             decoration: BoxDecoration(
-                              color: Color(currentTopic.TopicColor),
+                              color: Color(currentTopic.value.TopicColor),
                               shape: BoxShape.circle,
                             ),
                           ),
