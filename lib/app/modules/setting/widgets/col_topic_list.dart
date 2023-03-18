@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/number_symbols_data.dart';
@@ -27,7 +28,7 @@ class ColTopicList extends StatelessWidget {
           onTap: () {
             log(topicList[index].label);
             controller.currentTopic = topicList[index].obs;
-            Get.toNamed(topicList[index].screen.toString());
+            Get.toNamed(topicList[index].screen);
           },
           child: ListTile(
             leading: TopicCard(

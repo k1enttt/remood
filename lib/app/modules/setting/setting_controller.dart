@@ -66,7 +66,6 @@ class SettingController extends GetxController {
   var settingLabelStyle = CustomTextStyle.normalText(Colors.black);
 
   // Manage topics
-  // TODO: Thêm screen cho các topic
   Rx<TopicButton> currentTopic = TopicButton(
     icon: CardTopic(
       title: "",
@@ -74,8 +73,10 @@ class SettingController extends GetxController {
       icons: Icons.work.codePoint,
     ),
     label: "Work",
+    screen: AppRoutes.topicDetail,
   ).obs;
 
+  // Properties of topics button
   List<TopicButton> topicList = [
     TopicButton(
       icon: CardTopic(
@@ -84,6 +85,7 @@ class SettingController extends GetxController {
         icons: Icons.work.codePoint,
       ),
       label: "Work",
+      screen: AppRoutes.topicDetail,
     ),
     TopicButton(
       icon: CardTopic(
@@ -92,6 +94,7 @@ class SettingController extends GetxController {
         icons: Icons.favorite.codePoint,
       ),
       label: "Love",
+      screen: AppRoutes.topicDetail,
     ),
     TopicButton(
       icon: CardTopic(
@@ -100,6 +103,7 @@ class SettingController extends GetxController {
         icons: Icons.group.codePoint,
       ),
       label: "Friends",
+      screen: AppRoutes.topicDetail,
     ),
     TopicButton(
       icon: CardTopic(
@@ -108,9 +112,11 @@ class SettingController extends GetxController {
         icons: Icons.family_restroom.codePoint,
       ),
       label: "Family",
+      screen: AppRoutes.topicDetail,
     ),
   ];
 
+  // Properties of create-new-topic button
   List<TopicButton> createNewTopic = [
     TopicButton(
       icon: CardTopic(
@@ -119,20 +125,24 @@ class SettingController extends GetxController {
         icons: Icons.add.codePoint,
       ),
       label: "Create new topic",
+      screen: AppRoutes.createNewTopic,
     ),
   ];
 
   // First day of the week
   RxBool isSunday = true.obs;
 
+  // Get value of isSunday
   bool get getIsSunday => isSunday.value;
   bool get getIsMonday => !isSunday.value;
 
+  // Active Sunday button
   void onTapSunday() {
     isSunday(true);
     log('Sunday is the first day.');
   }
 
+  // Active Sunday button
   void onTapMonday() {
     isSunday(false);
     log('Monday is the first day');
