@@ -60,7 +60,7 @@ class _ActionBarState extends State<ActionBar> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
-                child: Image.asset(Assets.logoText),
+                child: Image.asset(Assets.logo),
               ),
             ],
           ),

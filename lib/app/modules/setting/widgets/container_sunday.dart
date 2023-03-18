@@ -13,7 +13,7 @@ class ContainerFirstDaySunday extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<SettingController>();
+    final controller = Get.put(SettingController());
     String label = 'Sunday';
 
     return GestureDetector(

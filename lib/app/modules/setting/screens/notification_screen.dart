@@ -14,7 +14,7 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<SettingController>();
+    final controller = Get.put(SettingController());
 
     return Scaffold(
       backgroundColor: AppColors.backgroundPage,
@@ -122,7 +122,7 @@ class NotificationScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
