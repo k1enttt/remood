@@ -42,28 +42,25 @@ class SheetReadDiary extends StatelessWidget {
               children: [
                 // Icon
                 Icon(
-                  IconData(
-                    id == 0
-                        ? readDiaryController
-                            .positiveDiaryList[
-                                readDiaryController.currentDiary.value]
-                            .icon
-                        : readDiaryController
-                            .negativeDiaryList[
-                                readDiaryController.currentDiary.value]
-                            .icon,
-                    fontFamily: 'MaterialIcons',
-                  ),
+                  id == 0
+                      ? readDiaryController
+                          .positiveDiaryList[
+                              readDiaryController.currentDiary.value]
+                          .icon
+                      : readDiaryController
+                          .negativeDiaryList[
+                              readDiaryController.currentDiary.value]
+                          .icon,
                   color: id == 0
-                      ? Color(readDiaryController
-                              .positiveDiaryList[
-                                  readDiaryController.currentDiary.value]
-                              .diaryColor)
+                      ? readDiaryController
+                          .positiveDiaryList[
+                              readDiaryController.currentDiary.value]
+                          .diaryColor
                           .withOpacity(1)
-                      : Color(readDiaryController
-                              .negativeDiaryList[
-                                  readDiaryController.currentDiary.value]
-                              .diaryColor)
+                      : readDiaryController
+                          .negativeDiaryList[
+                              readDiaryController.currentDiary.value]
+                          .diaryColor
                           .withOpacity(1),
                   size: 30,
                 ),
@@ -115,15 +112,15 @@ class SheetReadDiary extends StatelessWidget {
                     icon: Icon(
                       Icons.edit,
                       color: id == 0
-                          ? Color(readDiaryController
-                                  .positiveDiaryList[
-                                      readDiaryController.currentDiary.value]
-                                  .diaryColor)
+                          ? readDiaryController
+                              .positiveDiaryList[
+                                  readDiaryController.currentDiary.value]
+                              .diaryColor
                               .withOpacity(1)
-                          : Color(readDiaryController
-                                  .negativeDiaryList[
-                                      readDiaryController.currentDiary.value]
-                                  .diaryColor)
+                          : readDiaryController
+                              .negativeDiaryList[
+                                  readDiaryController.currentDiary.value]
+                              .diaryColor
                               .withOpacity(1),
                       size: 30,
                     ))
@@ -197,12 +194,12 @@ class SheetReadDiary extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               color: id == 0
-                  ? Color(readDiaryController
+                  ? readDiaryController
                       .positiveDiaryList[readDiaryController.currentDiary.value]
-                      .diaryColor)
-                  : Color(readDiaryController
+                      .diaryColor
+                  : readDiaryController
                       .negativeDiaryList[readDiaryController.currentDiary.value]
-                      .diaryColor),
+                      .diaryColor,
             ),
             child: Padding(
               padding: const EdgeInsets.all(15),

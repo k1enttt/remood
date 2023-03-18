@@ -46,20 +46,17 @@ class SheetReadDiaryFreshmood extends StatelessWidget {
               children: [
 // Icon
                 Icon(
-                  IconData(
-                    id == 0
-                        ? ListPositveDiary
-                            .listPositiveDiary[currentDiary.value].icon
-                        : ListNegativeDiary
-                            .listNegativeDiary[currentDiary.value].icon,
-                    fontFamily: 'MaterialIcons',
-                  ),
+                  id == 0
+                      ? ListPositveDiary
+                          .listPositiveDiary[currentDiary.value].icon
+                      : ListNegativeDiary
+                          .listNegativeDiary[currentDiary.value].icon,
                   color: id == 0
-                      ? Color(ListPositveDiary
-                              .listPositiveDiary[currentDiary.value].diaryColor)
+                      ? ListPositveDiary
+                          .listPositiveDiary[currentDiary.value].diaryColor
                           .withOpacity(1)
-                      : Color(ListNegativeDiary
-                              .listNegativeDiary[currentDiary.value].diaryColor)
+                      : ListNegativeDiary
+                          .listNegativeDiary[currentDiary.value].diaryColor
                           .withOpacity(1),
                   size: 30,
                 ),
@@ -154,10 +151,10 @@ class SheetReadDiaryFreshmood extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               color: id == 0
-                  ? Color(ListPositveDiary
-                      .listPositiveDiary[currentDiary.value].diaryColor)
-                  : Color(ListNegativeDiary
-                      .listNegativeDiary[currentDiary.value].diaryColor),
+                  ? ListPositveDiary
+                      .listPositiveDiary[currentDiary.value].diaryColor
+                  : ListNegativeDiary
+                      .listNegativeDiary[currentDiary.value].diaryColor,
             ),
             child: Padding(
               padding: const EdgeInsets.all(15),
