@@ -15,19 +15,19 @@ class TopicCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double _screenWidth = MediaQuery.of(context).size.width;
-    double _screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     DiaryController currentTopicIndex = Get.find();
     return SizedBox(
-      width: _screenWidth * 0.093,
-      height: _screenHeight * 0.059,
+      width: screenWidth * 0.093,
+      height: screenHeight * 0.059,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Obx(
             () => Container(
-              height: _screenHeight * 0.043,
-              width: _screenWidth * 0.093,
+              height: screenHeight * 0.043,
+              width: screenWidth * 0.093,
               decoration: BoxDecoration(
                 color: currentTopicIndex.currentTopic.value == index
                     ? Color(topic.TopicColor)

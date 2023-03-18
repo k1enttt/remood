@@ -6,16 +6,14 @@ import 'package:remood/app/core/values/app_colors.dart';
 import 'package:remood/app/core/values/assets_images.dart';
 import 'package:remood/app/core/values/text_style.dart';
 import 'package:remood/app/data/models/language.dart';
-import 'package:remood/app/data/models/list_selected_icons_topic.dart';
 import 'package:remood/app/data/models/list_topic.dart';
 import 'package:remood/app/data/models/setting_button.dart';
 import 'package:remood/app/data/models/topic.dart';
-import 'package:remood/app/modules/write_diary/diary_controller.dart';
+import 'package:remood/app/data/models/topic_button.dart';
+import 'package:remood/app/modules/setting/screens/mt_topic_detail_screen.dart';
 import 'package:remood/app/routes/app_routes.dart';
 
 class SettingController extends GetxController {
-  // DiaryController diaryController = Get.find();
-
   // Main screen
   List<SettingButton> settingList = [
     SettingButton(
@@ -24,10 +22,7 @@ class SettingController extends GetxController {
       screen: AppRoutes.starOfTheWeek,
     ),
     SettingButton(
-      icon: Assets.language,
-      label: "Language",
-      screen: AppRoutes.language,
-    ),
+        icon: Assets.language, label: "Language", screen: AppRoutes.language),
     SettingButton(
       icon: Assets.notification,
       label: "Notification",
@@ -71,60 +66,66 @@ class SettingController extends GetxController {
   var settingLabelStyle = CustomTextStyle.normalText(Colors.black);
 
   // Manage topics
-
-  // Rx<int> currentIconTopic = 0.obs;
-
-  Rx<CardTopic> currentTopic = CardTopic(
-    title: "",
-    TopicColor: AppColors.lightGreen18.value,
-    icons: Icons.work.codePoint,
-  ).obs;
-
-  /// action 0 is Renaming topic
-  /// action 1 is Changing topic icon
-  /// action 2 is Changing topic color
-  int actionIndex = 0;
-
-  void actions() {
-    // Store index of current topic selected
-    // int indexCurrentTopic = diaryController.currentTopic.value;
-
-    switch (actionIndex) {
-// Rename
-      case 0:
-        break;
-// Changing topic icon
-      case 1:
-        break;
-// Changing topic color
-      case 2:
-        break;
-      default:
-        break;
-    }
-  }
-
-  // Properties of topics button
-  List<CardTopic> topicList = [
-    CardTopic(
-      title: "Work",
+  Rx<TopicButton> currentTopic = TopicButton(
+    icon: CardTopic(
+      title: "",
       TopicColor: AppColors.lightGreen18.value,
       icons: Icons.work.codePoint,
     ),
-    CardTopic(
-      title: "Love",
-      TopicColor: AppColors.lightRed22.value,
-      icons: Icons.favorite.codePoint,
+    label: "Work",
+    screen: AppRoutes.topicDetail,
+  ).obs;
+
+  // Properties of topics button
+  List<TopicButton> topicList = [
+    TopicButton(
+      icon: CardTopic(
+        title: "",
+        TopicColor: AppColors.lightGreen18.value,
+        icons: Icons.work.codePoint,
+      ),
+      label: "Work",
+      screen: AppRoutes.topicDetail,
     ),
-    CardTopic(
-      title: "Friends",
-      TopicColor: AppColors.lightOrange27.value,
-      icons: Icons.group.codePoint,
+    TopicButton(
+      icon: CardTopic(
+        title: "",
+        TopicColor: AppColors.lightRed22.value,
+        icons: Icons.favorite.codePoint,
+      ),
+      label: "Love",
+      screen: AppRoutes.topicDetail,
     ),
-    CardTopic(
-      title: "Family",
-      TopicColor: AppColors.lightPurple22.value,
-      icons: Icons.family_restroom.codePoint,
+    TopicButton(
+      icon: CardTopic(
+        title: "",
+        TopicColor: AppColors.lightOrange27.value,
+        icons: Icons.group.codePoint,
+      ),
+      label: "Friends",
+      screen: AppRoutes.topicDetail,
+    ),
+    TopicButton(
+      icon: CardTopic(
+        title: "",
+        TopicColor: AppColors.lightPurple22.value,
+        icons: Icons.family_restroom.codePoint,
+      ),
+      label: "Family",
+      screen: AppRoutes.topicDetail,
+    ),
+  ];
+
+  // Properties of create-new-topic button
+  List<TopicButton> createNewTopic = [
+    TopicButton(
+      icon: CardTopic(
+        title: "",
+        TopicColor: AppColors.grey22.value,
+        icons: Icons.add.codePoint,
+      ),
+      label: "Create new topic",
+      screen: AppRoutes.createNewTopic,
     ),
   ];
 

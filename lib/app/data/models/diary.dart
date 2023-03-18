@@ -11,13 +11,15 @@ class Diary extends HiveObject {
   @HiveField(1)
   DateTime date;
   @HiveField(2)
-  IconData icon;
+  int icon;
   @HiveField(3)
-  Color diaryColor;
+  int diaryColor;
   @HiveField(4)
   String title;
   @HiveField(5)
   String? image;
+  @HiveField(6)
+  bool? isPinned = false;
   Diary({
     required this.diary,
     required this.date,
@@ -25,5 +27,6 @@ class Diary extends HiveObject {
     required this.icon,
     required this.title,
     this.image,
+    this.isPinned,
   });
 }

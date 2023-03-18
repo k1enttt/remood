@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:remood/app/core/values/app_colors.dart';
+import 'package:remood/app/core/values/text_style.dart';
 import 'package:remood/app/modules/setting/widgets/confirm_button.dart';
 import 'package:remood/app/modules/setting/widgets/container_monday.dart';
 import 'package:remood/app/modules/setting/widgets/container_sunday.dart';
@@ -29,7 +30,6 @@ class StartOfTheWeekScreen extends StatelessWidget {
             const ContainerFirstDayMonday(),
 
             // Save button
-// TODO: Save the selected value - first day of the week
             const ConfirmButton(label: "Save"),
             SizedBox(
               height: screenHeight * 0.03,
