@@ -10,8 +10,10 @@ class ActionBar extends StatefulWidget {
   const ActionBar({
     Key? key,
     required this.pageIndex,
+    required this.controler,
   }) : super(key: key);
   final RxInt pageIndex;
+  final OnboardingController controler;
 
   @override
   State<ActionBar> createState() => _ActionBarState();
@@ -25,47 +27,40 @@ class _ActionBarState extends State<ActionBar> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.transparent,
-      child: Stack(
-        children: [
-          Obx(
-            () => Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // Previous button
-                widget.pageIndex > 0
-                    ? IconButton(
-                        onPressed: () {
-                          onboardingController.previousScreen(pageController);
-                        },
-                        icon: Image.asset(Assets.arrowBack))
-                    : const SizedBox(),
-
-                // Skip button
-                TextButton(
-                  onPressed: () {
-                    Get.offAllNamed(AppRoutes.home);
-                  },
-                  child: Text("Skip",
-                      style: CustomTextStyle.textButton(
-                          AppColors.onboardingSkipButton)),
-                ),
-              ],
-            ),
-          ),
-          // Logo
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+      child: Obx(() => Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              // Previous button
+              widget.pageIndex > 0
+                  ? IconButton(
+                      onPressed: () {
+                        onboardingController.previousScreen(pageController);
+                      },
+                      icon: Image.asset(Assets.arrowBack))
+                  : const SizedBox(
+                      width: 40,
+                      height: 40,
+                    ),
+
+              // Logo
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: Image.asset(Assets.logo),
               ),
+
+              // Skip button
+              TextButton(
+                onPressed: () {
+                  Get.offAllNamed(AppRoutes.home);
+                },
+                child: Text("Skip",
+                    style: CustomTextStyle.textButton(
+                        AppColors.onboardingSkipButton)),
+              )
             ],
-          ),
-        ],
-      ),
+          )),
     );
   }
 }
