@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:remood/app/core/values/assets_images.dart';
 import 'package:remood/app/data/models/diary.dart';
 import 'package:intl/intl.dart';
 
@@ -12,7 +10,6 @@ class DiaryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     double _screenWidth = MediaQuery.of(context).size.width;
     double _screenHeight = MediaQuery.of(context).size.height;
-    RxBool isPressed = false.obs;
     return Container(
       width: _screenWidth * 0.723,
       height: _screenHeight * 0.167,
@@ -28,30 +25,18 @@ class DiaryCard extends StatelessWidget {
             Row(
               children: [
                 Icon(
-                  IconData(
-                    diary.icon,
-                    fontFamily: 'MaterialIcons',
-                  ),
+                  IconData(diary.icon),
                   color: Color(diary.diaryColor).withOpacity(1),
                 ),
                 const SizedBox(
                   width: 7,
                 ),
-                Text(DateFormat('dd/MM/yyyy').format(diary.date),
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                    )),
-                SizedBox(
-                  width: _screenWidth * 0.32,
+                Text(
+                  DateFormat('dd/MM/yyyy').format(diary.date),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-                GestureDetector(
-                    onTap: () {
-                      isPressed.value = !isPressed.value;
-                      diary.isPinned = isPressed.value;
-                    },
-                    child: Obx(() => isPressed.value == false
-                        ? Image.asset(Assets.pinnedDiary)
-                        : Image.asset(Assets.isPinnedDiary))),
               ],
             ),
             const SizedBox(

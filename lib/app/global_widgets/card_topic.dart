@@ -51,16 +51,14 @@ class TopicCard extends StatelessWidget {
               ),
             ),
           ),
-          topic.title != ""
-              ? Text(
-                  topic.title,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 8,
-                    fontWeight: FontWeight.w600,
-                  ),
-                )
-              : const SizedBox(),
+          Text(
+            topic.title,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 8,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
         ],
       ),
     );

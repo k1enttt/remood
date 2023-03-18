@@ -7,14 +7,13 @@ import 'package:remood/app/data/models/list_selected_icons_topic.dart';
 import 'package:remood/app/modules/setting/widgets/confirm_button.dart';
 import 'package:remood/app/modules/setting/widgets/stack_setting_appbar.dart';
 import 'package:remood/app/modules/write_diary/diary_controller.dart';
-import 'package:remood/app/modules/write_diary/widgets/bottom_sheet_add_topic.dart';
 
 class CreateNewTopicScreen extends StatelessWidget {
   const CreateNewTopicScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    DiaryController controller = Get.find();
+    DiaryController diaryController = Get.find();
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     ListSelectedIcons listSelectedIcons = ListSelectedIcons();
@@ -52,7 +51,7 @@ class CreateNewTopicScreen extends StatelessWidget {
                   SizedBox(
                     width: screenWidth * 0.872,
                     child: TextField(
-                      controller: controller.titleController,
+                      controller: diaryController.titleController,
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(16),
@@ -105,7 +104,7 @@ class CreateNewTopicScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: (() {
-                            controller.changeIconTopic(
+                            diaryController.changeIconTopic(
                                 index, listSelectedIcons.selectedIcons[index]);
                           }),
                           child: Obx(
@@ -113,17 +112,18 @@ class CreateNewTopicScreen extends StatelessWidget {
                               width: screenWidth * 0.093,
                               height: screenHeight * 0.043,
                               decoration: BoxDecoration(
-                                color:
-                                    controller.currentIconTopic.value == index
-                                        ? controller.colorTopic.value
-                                        : AppColors.grey22,
+                                color: diaryController.currentIconTopic.value ==
+                                        index
+                                    ? diaryController.colorTopic.value
+                                    : AppColors.grey22,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Icon(
                                 listSelectedIcons.selectedIcons[index],
-                                color: controller.currentIconTopic.value ==
+                                color: diaryController.currentIconTopic.value ==
                                         index
-                                    ? controller.colorTopic.value.withOpacity(1)
+                                    ? diaryController.colorTopic.value
+                                        .withOpacity(1)
                                     : AppColors.darkBlue,
                               ),
                             ),
@@ -156,7 +156,7 @@ class CreateNewTopicScreen extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return GestureDetector(
                             onTap: () {
-                              controller.changeColorTopic(index,
+                              diaryController.changeColorTopic(index,
                                   listSelectedColor.selectedColors[index]);
                             },
                             child: Obx(
@@ -167,7 +167,8 @@ class CreateNewTopicScreen extends StatelessWidget {
                                   color:
                                       listSelectedColor.selectedColors[index],
                                   borderRadius: BorderRadius.circular(10),
-                                  border: controller.currentColorTopic.value ==
+                                  border: diaryController
+                                              .currentColorTopic.value ==
                                           index
                                       ? Border.all(color: Colors.black)
                                       : Border.all(color: Colors.transparent),
@@ -184,7 +185,10 @@ class CreateNewTopicScreen extends StatelessWidget {
               ),
             ),
 // Save button
-            const ConfirmButton(label: "Save"),
+            ConfirmButton(
+              label: "Save",
+              func: diaryController.addCurrentTopic,
+            ),
             SizedBox(
               height: screenHeight * 0.03,
             ),

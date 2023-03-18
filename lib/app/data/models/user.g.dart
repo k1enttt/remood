@@ -1,38 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'topic.dart';
+part of 'user.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class CardTopicAdapter extends TypeAdapter<CardTopic> {
+class UserAdapter extends TypeAdapter<User> {
   @override
-  final int typeId = 1;
+  final int typeId = 2;
 
   @override
-  CardTopic read(BinaryReader reader) {
+  User read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return CardTopic(
-      title: fields[0] as String,
-      icons: fields[1] as int,
-      TopicColor: fields[2] as int,
+    return User(
+      name: fields[0] as String,
+      avtURL: fields[1] as String,
     );
   }
 
   @override
-  void write(BinaryWriter writer, CardTopic obj) {
+  void write(BinaryWriter writer, User obj) {
     writer
-      ..writeByte(3)
-      ..writeByte(0)
-      ..write(obj.title)
-      ..writeByte(1)
-      ..write(obj.icons)
       ..writeByte(2)
-      ..write(obj.TopicColor);
+      ..writeByte(0)
+      ..write(obj.name)
+      ..writeByte(1)
+      ..write(obj.avtURL);
   }
 
   @override
@@ -41,7 +38,7 @@ class CardTopicAdapter extends TypeAdapter<CardTopic> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is CardTopicAdapter &&
+      other is UserAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
