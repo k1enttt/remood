@@ -4,48 +4,7 @@ import 'package:remood/app/core/values/app_colors.dart';
 import 'package:remood/app/data/models/diary.dart';
 
 class ListPositveDiary {
-  static var listPositiveDiary = <Diary>[
-    Diary(
-      diary:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum sapien sodales mi sagittis hendrerit. Curabitur ut lectus nec orci cursus rhoncus. Donec a ultrices risus. ",
-      date: DateTime.now(),
-      diaryColor: AppColors.lightGreen18.value,
-      icon: Icons.work.codePoint,
-      title: "Work",
-    ),
-    Diary(
-      diary:
-          "Mauris interdum sapien sodales mi sagittis hendrerit. Curabitur ut lectus nec orci cursus rhoncus. Donec a ultrices risus. ",
-      date: DateTime.now(),
-      diaryColor: AppColors.lightGreen18.value,
-      icon: Icons.work.codePoint,
-      title: "Work",
-    ),
-    Diary(
-      diary:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum sapien sodales mi sagittis hendrerit. Curabitur ut lectus nec orci cursus rhoncus. Donec a ultrices risus. ",
-      date: DateTime.now(),
-      diaryColor: AppColors.lightGreen18.value,
-      icon: Icons.work.codePoint,
-      title: "Love",
-    ),
-    Diary(
-      diary:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum sapien sodales mi sagittis hendrerit. Curabitur ut lectus nec orci cursus rhoncus. Donec a ultrices risus. ",
-      date: DateTime.now(),
-      diaryColor: AppColors.lightGreen18.value,
-      icon: Icons.work.codePoint,
-      title: "Love",
-    ),
-    Diary(
-      diary:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum sapien sodales mi sagittis hendrerit. Curabitur ut lectus nec orci cursus rhoncus. Donec a ultrices risus. ",
-      date: DateTime.now(),
-      diaryColor: AppColors.lightGreen18.value,
-      icon: Icons.work.codePoint,
-      title: "Work",
-    ),
-  ];
+  static List<Diary> listPositiveDiary = [];
   final _mybox = Hive.box<List>('mybox');
   void createInitialData() {
     listPositiveDiary = [
@@ -53,7 +12,7 @@ class ListPositveDiary {
         diary:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum sapien sodales mi sagittis hendrerit. Curabitur ut lectus nec orci cursus rhoncus. Donec a ultrices risus. ",
         date: DateTime.now(),
-        diaryColor: AppColors.lightGreen18.value,
+        diaryColor: AppColors.LightGreen18.value,
         icon: Icons.work.codePoint,
         title: "Work",
       ),
@@ -61,7 +20,7 @@ class ListPositveDiary {
         diary:
             "Mauris interdum sapien sodales mi sagittis hendrerit. Curabitur ut lectus nec orci cursus rhoncus. Donec a ultrices risus. ",
         date: DateTime.utc(2022, 12, 9),
-        diaryColor: AppColors.lightGreen18.value,
+        diaryColor: AppColors.LightGreen18.value,
         icon: Icons.work.codePoint,
         title: "Work",
       ),
