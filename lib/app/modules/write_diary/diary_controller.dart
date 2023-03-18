@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
@@ -5,11 +7,12 @@ import 'package:remood/app/core/values/app_colors.dart';
 import 'package:remood/app/data/models/diary.dart';
 import 'package:remood/app/data/models/list_negative_diary.dart';
 import 'package:remood/app/data/models/list_positive_diary.dart';
+import 'package:remood/app/data/models/list_selected_color_topic.dart';
+import 'package:remood/app/data/models/list_selected_icons_topic.dart';
 import 'package:remood/app/data/models/list_topic.dart';
 import 'package:remood/app/data/models/topic.dart';
 import 'package:remood/app/modules/write_diary/widgets/bottom_sheet_add_topic.dart';
 import 'dart:io';
-import 'package:flutter/animation.dart';
 
 class DiaryController extends GetxController {
 // hive box
@@ -81,7 +84,7 @@ class DiaryController extends GetxController {
   }
 
 // choose color added topic
-  Rx<int> currentColorTopic = 0.obs;
+  RxInt currentColorTopic = 0.obs;
   Rx<Color> colorTopic = AppColors.lightprimary250.obs;
   void changeColorTopic(index, Color currentColor) {
     currentColorTopic.value = index;
@@ -90,10 +93,11 @@ class DiaryController extends GetxController {
 
 // choose icon added topic
   Rx<int> currentIconTopic = 0.obs;
+  int get getCurrentIconTopic => currentColorTopic.value;
   Rx<IconData> addtopicIcon = Icons.search.obs;
-  void changeIconTopic(index, IconData currentIcon) {
-    currentIconTopic.value = index;
-    addtopicIcon.value = currentIcon;
+  void changeIconTopic(int index, IconData currentIcon) {
+    currentIconTopic(index);
+    addtopicIcon(currentIcon);
   }
 
 // add topic
@@ -101,12 +105,11 @@ class DiaryController extends GetxController {
 
   void addCurrentTopic() {
     CardTopic newTopic = CardTopic(
-        title: titleController.text.trim(),
-        TopicColor: colorTopic.value.value,
-        icons: addtopicIcon.value.codePoint);
+      title: titleController.text.trim(),
+      TopicColor: colorTopic.value.value,
+      icons: addtopicIcon.value.codePoint,
+    );
     listTopic.add(newTopic);
     hiveBoxTopic.updateDatabase();
   }
-
-/*  */
 }
