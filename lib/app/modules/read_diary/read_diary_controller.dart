@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:remood/app/core/values/app_colors.dart';
 import 'package:remood/app/data/models/diary.dart';
 import 'package:remood/app/data/models/list_negative_diary.dart';
@@ -12,6 +13,30 @@ import 'package:remood/app/modules/read_diary/widgets/bottom_sheet_search_diary.
 import 'package:remood/app/routes/app_routes.dart';
 
 class ReadDiaryController extends GetxController {
+// hive box
+  final _mybox = Hive.box<List>('mybox');
+  RxList<Diary> positiveDiaryList = <Diary>[].obs;
+  RxList<Diary> negativeDiaryList = <Diary>[].obs;
+  ListNegativeDiary hiveBoxNegative = ListNegativeDiary();
+  ListPositveDiary hiveBoxPositive = ListPositveDiary();
+  @override
+  void onInit() {
+    if (_mybox.get("positivediary") == null) {
+      hiveBoxPositive.createInitialData();
+    } else {
+      hiveBoxPositive.loadData();
+    }
+    if (_mybox.get("negativediary") == null) {
+      hiveBoxNegative.createInitialData();
+    } else {
+      hiveBoxNegative.loadData();
+    }
+    positiveDiaryList.value = ListPositveDiary.listPositiveDiary;
+    negativeDiaryList.value = ListNegativeDiary.listNegativeDiary;
+
+    super.onInit();
+  }
+
 // read diary
   RxInt currentDiary = 0.obs;
   void readDiary(context, index, String tag, int id) {
@@ -104,23 +129,17 @@ class ReadDiaryController extends GetxController {
   }
 
 // delete diary
-  RxList<Diary> positiveDiaryList = <Diary>[].obs;
-  RxList<Diary> negativeDiaryList = <Diary>[].obs;
-  @override
-  void onInit() {
-    positiveDiaryList.value = ListPositveDiary.listPositiveDiary;
-    negativeDiaryList.value = ListNegativeDiary.listNegativeDiary;
-    super.onInit();
-  }
 
   void deletePositiveDiary(index) {
     positiveDiaryList.removeAt(index);
     ListPositveDiary.listPositiveDiary = positiveDiaryList.value;
+    hiveBoxPositive.updateDatabase();
   }
 
   void deleteNegativeDiary(index) {
     negativeDiaryList.removeAt(index);
     ListNegativeDiary.listNegativeDiary = negativeDiaryList.value;
+    hiveBoxNegative.updateDatabase();
   }
 
 // edit diary
@@ -145,6 +164,7 @@ class ReadDiaryController extends GetxController {
       ListPositveDiary.listPositiveDiary[currentDiary.value].diary =
           editingController.text;
       positiveDiaryList[currentDiary.value].diary = editingController.text;
+      hiveBoxPositive.updateDatabase();
       positiveDiaryList.refresh();
       isPressed.value = false;
       Get.back();
@@ -157,6 +177,7 @@ class ReadDiaryController extends GetxController {
       ListNegativeDiary.listNegativeDiary[currentDiary.value].diary =
           editingController.text;
       negativeDiaryList[currentDiary.value].diary = editingController.text;
+      hiveBoxNegative.updateDatabase();
       negativeDiaryList.refresh();
       isPressed.value = false;
       Get.back();

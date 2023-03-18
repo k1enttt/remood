@@ -8,6 +8,7 @@ import 'package:remood/app/data/models/list_positive_diary.dart';
 import 'package:intl/intl.dart';
 import 'package:remood/app/modules/read_diary/read_diary_controller.dart';
 import 'package:remood/app/modules/read_diary/widgets/list_positive_diary_card.dart';
+import 'dart:io';
 
 class SheetReadDiaryFreshmood extends StatelessWidget {
   String tag;
@@ -46,16 +47,20 @@ class SheetReadDiaryFreshmood extends StatelessWidget {
 // Icon
                 Icon(
                   id == 0
-                      ? ListPositveDiary
-                          .listPositiveDiary[currentDiary.value].icon
-                      : ListNegativeDiary
-                          .listNegativeDiary[currentDiary.value].icon,
+                      ? IconData(
+                          ListPositveDiary
+                              .listPositiveDiary[currentDiary.value].icon,
+                          fontFamily: 'MaterialIcons')
+                      : IconData(
+                          ListNegativeDiary
+                              .listNegativeDiary[currentDiary.value].icon,
+                          fontFamily: 'MaterialIcons'),
                   color: id == 0
-                      ? ListPositveDiary
-                          .listPositiveDiary[currentDiary.value].diaryColor
+                      ? Color(ListPositveDiary
+                              .listPositiveDiary[currentDiary.value].diaryColor)
                           .withOpacity(1)
-                      : ListNegativeDiary
-                          .listNegativeDiary[currentDiary.value].diaryColor
+                      : Color(ListNegativeDiary
+                              .listNegativeDiary[currentDiary.value].diaryColor)
                           .withOpacity(1),
                   size: 30,
                 ),
@@ -81,12 +86,12 @@ class SheetReadDiaryFreshmood extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(40),
                     border: Border.all(
-                        color: AppColors.grey22.withOpacity(1), width: 1),
+                        color: AppColors.Grey22.withOpacity(1), width: 1),
                   ),
                   child: Center(
                       child: Text(
                     tag,
-                    style: TextStyle(color: AppColors.grey22.withOpacity(1)),
+                    style: TextStyle(color: AppColors.Grey22.withOpacity(1)),
                   )),
                 )
               ],
@@ -114,11 +119,24 @@ class SheetReadDiaryFreshmood extends StatelessWidget {
               color: AppColors.Primary42,
               borderRadius: BorderRadius.circular(10),
             ),
-            child:
-                ListPositveDiary.listPositiveDiary[currentDiary.value].image !=
+            child: id == 0
+                ? ListPositveDiary
+                            .listPositiveDiary[currentDiary.value].image !=
                         null
-                    ? Image.file(ListPositveDiary
-                        .listPositiveDiary[currentDiary.value].image!)
+                    ? Image.file(File(ListPositveDiary
+                        .listPositiveDiary[currentDiary.value].image!))
+                    : const Center(
+                        child: Icon(
+                          Icons.camera_alt,
+                          color: AppColors.DarkGrey,
+                          size: 40,
+                        ),
+                      )
+                : ListNegativeDiary
+                            .listNegativeDiary[currentDiary.value].image !=
+                        null
+                    ? Image.file(File(ListNegativeDiary
+                        .listNegativeDiary[currentDiary.value].image!))
                     : const Center(
                         child: Icon(
                           Icons.camera_alt,
@@ -137,10 +155,10 @@ class SheetReadDiaryFreshmood extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               color: id == 0
-                  ? ListPositveDiary
-                      .listPositiveDiary[currentDiary.value].diaryColor
-                  : ListNegativeDiary
-                      .listNegativeDiary[currentDiary.value].diaryColor,
+                  ? Color(ListPositveDiary
+                      .listPositiveDiary[currentDiary.value].diaryColor)
+                  : Color(ListNegativeDiary
+                      .listNegativeDiary[currentDiary.value].diaryColor),
             ),
             child: Padding(
               padding: const EdgeInsets.all(15),

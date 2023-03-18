@@ -24,7 +24,7 @@ class BottomBar extends StatelessWidget {
         child: Obx(
           () => BottomNavigationBar(
             unselectedItemColor: AppColors.unselecttedIcon,
-            selectedItemColor: AppColors.mainColor,
+            selectedItemColor: AppColors.MainColor,
             type: BottomNavigationBarType.fixed,
             showSelectedLabels: false,
             showUnselectedLabels: false,

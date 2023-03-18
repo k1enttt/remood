@@ -1,8 +1,12 @@
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:remood/app/core/values/app_colors.dart';
 import 'package:remood/app/data/models/list_selected_color_topic.dart';
 import 'package:remood/app/data/models/list_selected_icons_topic.dart';
+import 'package:remood/app/modules/write_diary/diary_controller.dart';
+import 'package:remood/app/routes/app_routes.dart';
 
 class SheetAddTopic extends StatelessWidget {
   const SheetAddTopic({super.key});
@@ -13,6 +17,7 @@ class SheetAddTopic extends StatelessWidget {
     double _screenHeight = MediaQuery.of(context).size.height;
     ListSelectedIcons listSelectedIcons = ListSelectedIcons();
     ListSelectedColor listSelectedColor = ListSelectedColor();
+    DiaryController addTopic = Get.find();
     return Container(
         height: _screenHeight * 0.82,
         decoration: const BoxDecoration(
@@ -46,11 +51,12 @@ class SheetAddTopic extends StatelessWidget {
             SizedBox(
               width: _screenWidth * 0.872,
               child: TextField(
+                controller: addTopic.titleController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
                     borderSide: const BorderSide(
-                      color: AppColors.greyscale,
+                      color: AppColors.Greyscale,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
@@ -70,7 +76,7 @@ class SheetAddTopic extends StatelessWidget {
             Container(
               decoration: const BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(color: AppColors.greyscale),
+                  bottom: BorderSide(color: AppColors.Greyscale),
                 ),
               ),
             ),
@@ -102,16 +108,28 @@ class SheetAddTopic extends StatelessWidget {
                 ),
                 itemCount: 10,
                 itemBuilder: (context, index) {
-                  return Container(
-                    width: _screenWidth * 0.093,
-                    height: _screenHeight * 0.043,
-                    decoration: BoxDecoration(
-                      color: AppColors.grey22,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Icon(
-                      listSelectedIcons.selectedIcons[index],
-                      color: AppColors.darkBlue,
+                  return GestureDetector(
+                    onTap: (() {
+                      addTopic.changeIconTopic(
+                          index, listSelectedIcons.selectedIcons[index]);
+                    }),
+                    child: Obx(
+                      () => Container(
+                        width: _screenWidth * 0.093,
+                        height: _screenHeight * 0.043,
+                        decoration: BoxDecoration(
+                          color: addTopic.currentIconTopic.value == index
+                              ? addTopic.colorTopic.value
+                              : AppColors.Grey22,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Icon(
+                          listSelectedIcons.selectedIcons[index],
+                          color: addTopic.currentIconTopic.value == index
+                              ? addTopic.colorTopic.value.withOpacity(1)
+                              : AppColors.DarkBlue,
+                        ),
+                      ),
                     ),
                   );
                 },
@@ -145,14 +163,24 @@ class SheetAddTopic extends StatelessWidget {
                 ),
                 itemCount: 12,
                 itemBuilder: (context, index) {
-                  return Container(
-                    width: _screenWidth * 0.093,
-                    height: _screenHeight * 0.043,
-                    decoration: BoxDecoration(
-                      color: listSelectedColor.selectedColors[index],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  );
+                  return GestureDetector(
+                      onTap: () {
+                        addTopic.changeColorTopic(
+                            index, listSelectedColor.selectedColors[index]);
+                      },
+                      child: Obx(
+                        () => Container(
+                          width: _screenWidth * 0.093,
+                          height: _screenHeight * 0.043,
+                          decoration: BoxDecoration(
+                            color: listSelectedColor.selectedColors[index],
+                            borderRadius: BorderRadius.circular(10),
+                            border: addTopic.currentColorTopic.value == index
+                                ? Border.all(color: Colors.black)
+                                : Border.all(color: Colors.transparent),
+                          ),
+                        ),
+                      ));
                 },
               ),
             ),
@@ -164,11 +192,12 @@ class SheetAddTopic extends StatelessWidget {
               width: _screenWidth * 0.88,
               child: ElevatedButton(
                 onPressed: () {
+                  addTopic.addCurrentTopic();
                   Get.back();
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(AppColors.mainColor),
+                      MaterialStateProperty.all<Color>(AppColors.MainColor),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(13),

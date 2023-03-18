@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 class StackTag extends StatelessWidget {
   final ValueNotifier<int> currentIndex;
-  const StackTag({super.key, required this.currentIndex});
+  StackTag({super.key, required this.currentIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class StackTag extends StatelessWidget {
           height: _screenHeight * 0.09,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: AppColors.primary)),
+              border: Border.all(color: AppColors.Primary)),
 // Positve \ Negative tag
           child: Padding(
             padding: EdgeInsets.only(
@@ -46,9 +46,9 @@ class StackTag extends StatelessWidget {
                       height: _screenHeight * 0.031,
                       decoration: BoxDecoration(
                         color: changTag.current.value == index
-                            ? AppColors.mainColor
+                            ? AppColors.MainColor
                             : Colors.white,
-                        border: Border.all(color: AppColors.mainColor),
+                        border: Border.all(color: AppColors.MainColor),
                         borderRadius: BorderRadius.circular(10),
                       ),
 // nameTag
@@ -58,7 +58,7 @@ class StackTag extends StatelessWidget {
                           style: TextStyle(
                               color: changTag.current.value == index
                                   ? Colors.white
-                                  : AppColors.tagColors,
+                                  : AppColors.TagColors,
                               fontWeight: FontWeight.w600),
                         ),
                       ),
@@ -80,14 +80,14 @@ class StackTag extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: AppColors.primary),
+              border: Border.all(color: AppColors.Primary),
             ),
             child: const Center(
                 child: Text(
               'Tag',
               style: TextStyle(
                   fontWeight: FontWeight.w700,
-                  color: AppColors.primary,
+                  color: AppColors.Primary,
                   fontSize: 18),
             )),
           ),
