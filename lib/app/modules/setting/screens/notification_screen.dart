@@ -16,9 +16,6 @@ class NotificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(SettingController());
 
-    int hour = 21;
-    int minute = 30;
-
     return Scaffold(
       backgroundColor: AppColors.backgroundPage,
       body: SafeArea(
@@ -113,11 +110,12 @@ class NotificationScreen extends StatelessWidget {
                         color: AppColors.settingNotificationClockBg,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text(
-                        "$hour : $minute",
-                        style: CustomTextStyle.normalText(AppColors.mainColor)
-                            .copyWith(fontSize: 16),
-                      ),
+                      child: Obx(() => Text(
+                            "${controller.getHour} : ${controller.getMin}",
+                            style:
+                                CustomTextStyle.normalText(AppColors.mainColor)
+                                    .copyWith(fontSize: 16),
+                          )),
                     ),
                   ),
                 ],

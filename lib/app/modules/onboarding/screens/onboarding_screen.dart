@@ -12,6 +12,7 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<OnboardingController>();
     final pageController = Get.put(PageController());
 
     return Scaffold(
@@ -47,10 +48,11 @@ class OnboardingScreen extends StatelessWidget {
                     GetBuilder<OnboardingController>(
                       builder: (controller) {
                         return ActionBar(
-                            pageIndex: controller.pageIndex,
-                            controler: controller);
+                          pageIndex: controller.pageIndex,
+                        );
                       },
                     ),
+                    ActionBar(pageIndex: controller.pageIndex),
                   ],
                 ),
               ),
@@ -69,14 +71,13 @@ class OnboardingScreen extends StatelessWidget {
                   );
                 },
               ),
+
               const SizedBox(height: 20.0),
 
               //Onboarding button
               GetBuilder<OnboardingController>(
                 builder: (controller) {
-                  return OnboardingButton(
-                      pageIndex: controller.pageIndex,
-                      content: controller.contents);
+                  return OnboardingButton(pageIndex: controller.pageIndex);
                 },
               ),
               const SizedBox(height: 20.0)
