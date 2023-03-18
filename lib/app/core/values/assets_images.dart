@@ -19,6 +19,7 @@ class Assets {
   static const String language = 'assets/icons/language.png';
   static const String addressMarker = 'assets/icons/address_marker.png';
   static const String phone = 'assets/icons/phone.png';
+  static const String pin = 'assets/icons/pinSetting.png';
 
   // Images
   static const String logoText = 'assets/images/logo-text.png';
@@ -30,20 +31,24 @@ class Assets {
       'assets/images/onboarding_bg2.jpg';
   static const String onboardingBackground3 =
       'assets/images/onboarding_bg3.jpg';
+  static const String onboardingBackground4 =
+      'assets/images/onboarding_bg4.jpg';
   static const String onboardingImage1 =
       'assets/images/onboarding_img_diary.png';
   static const String onboardingImage2 =
       'assets/images/onboarding_img_freshmood.png';
   static const String onboardingImage3 =
       'assets/images/onboarding_img_report.png';
+  static const String onboardingImage4 =
+      'assets/images/onboarding_img_suggestion.png';
   static const String onboardingAlarm = 'assets/images/alarm.jpg';
-  static const String reportPercentage =
-      'assets/images/report-percentage-bg.png';
+  static const String reportPercentage = 'assets/images/percentagecircle.png';
   static const String settingUserAvt1 = 'assets/images/avt1.png';
   static const String settingUserAvt2 = 'assets/images/avt2.png';
   static const String settingUserAvt3 = 'assets/images/avt3.png';
   static const String settingUserAvt4 = 'assets/images/avt4.png';
   static const String settingUserAvt5 = 'assets/images/avt5.png';
+  static const String settingUserAvt6 = 'assets/images/avt6.png';
   static const String depressed = 'assets/icons/depressedface.png';
   static const String sad = 'assets/icons/sadface.png';
   static const String normal = 'assets/icons/normalface.png';
