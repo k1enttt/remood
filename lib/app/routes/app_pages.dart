@@ -7,8 +7,15 @@ import 'package:remood/app/modules/freshmood/sad_screens/screens/final_negative_
 import 'package:remood/app/modules/freshmood/sad_screens/screens/read_diary.dart';
 import 'package:remood/app/modules/freshmood/sad_screens/screens/sad_screen.dart';
 import 'package:remood/app/modules/read_diary/read_diary_binding.dart';
+import 'package:remood/app/modules/report/report_binding.dart';
+import 'package:remood/app/modules/report/screens/report_screen.dart';
+import 'package:remood/app/modules/setting/setting_binding.dart';
+import 'package:remood/app/modules/splash/screens/splash_screen.dart';
+import 'package:remood/app/modules/splash/splash_binding.dart';
 import 'package:remood/app/modules/write_diary/diary_binding.dart';
 import 'package:remood/app/modules/write_diary/screens/write_diary_screen.dart';
+import 'package:remood/app/modules/onboarding/onboarding_binding.dart';
+import 'package:remood/app/modules/onboarding/screens/onboarding_screen.dart';
 import '/app/modules/home/home_binding.dart';
 import '../modules/home/screens/home_screen.dart';
 import '/app/routes/app_routes.dart';
@@ -17,8 +24,13 @@ abstract class AppPages {
   static final List<GetPage> pages = [
     GetPage(
       name: AppRoutes.home,
-      page: () => HomeScreen(),
-      bindings: [HomeBinding(), ReadDiaryBinding()],
+      page: () => const HomeScreen(),
+      bindings: [
+        HomeBinding(),
+        ReadDiaryBinding(),
+        ReportBinding(),
+        SettingBinding()
+      ],
     ),
     GetPage(
       name: AppRoutes.writediary,
@@ -41,12 +53,27 @@ abstract class AppPages {
         binding: SadBinding()),
     GetPage(
         name: AppRoutes.readDiaryFreshmood,
-        page: (() => ReadDiaryFreshmood()),
+        page: (() => const ReadDiaryFreshmood()),
         binding: SadBinding()),
     GetPage(
       name: AppRoutes.finalNegativeScreen,
-      page: () => FinalNegativeScreen(),
+      page: () => const FinalNegativeScreen(),
       binding: SadBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.onboarding,
+      page: () => const OnboardingScreen(),
+      bindings: [OnboardingBinding(), SettingBinding()],
+    ),
+    GetPage(
+      name: AppRoutes.report,
+      page: () => const ReportScreen(),
+      binding: ReportBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.splash,
+      page: () => const SplashScreen(),
+      binding: SplashBinding(),
     ),
   ];
 }

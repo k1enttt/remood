@@ -14,10 +14,7 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SettingController());
-
-    int hour = 21;
-    int minute = 30;
+    final controller = Get.find<SettingController>();
 
     return Scaffold(
       backgroundColor: AppColors.backgroundPage,
@@ -27,7 +24,7 @@ class NotificationScreen extends StatelessWidget {
             const StackSettingAppbar(title: "Notification"),
             const SizedBox(height: 20),
 
-            // Turn on/off the reminder
+            // Turn on/off the reminder with a switch
             Padding(
               padding: const EdgeInsets.only(left: 24, right: 14),
               child: Row(
@@ -38,13 +35,15 @@ class NotificationScreen extends StatelessWidget {
                     style: CustomTextStyle.reportHeading()
                         .copyWith(color: Colors.black, fontSize: 16),
                   ),
-                  Obx(() => CupertinoSwitch(
-                        activeColor: AppColors.mainColor,
-                        value: controller.actived.value,
-                        onChanged: (_) {
-                          controller.switchOnChange();
-                        },
-                      )),
+                  Obx(
+                    () => CupertinoSwitch(
+                      activeColor: AppColors.mainColor,
+                      value: controller.actived.value,
+                      onChanged: (_) {
+                        controller.switchOnChange();
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -113,11 +112,12 @@ class NotificationScreen extends StatelessWidget {
                         color: AppColors.settingNotificationClockBg,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Text(
-                        "$hour : $minute",
-                        style: CustomTextStyle.normalText(AppColors.mainColor)
-                            .copyWith(fontSize: 16),
-                      ),
+                      child: Obx(() => Text(
+                            "${controller.getHour} : ${controller.getMin}",
+                            style:
+                                CustomTextStyle.normalText(AppColors.mainColor)
+                                    .copyWith(fontSize: 16),
+                          )),
                     ),
                   ),
                 ],

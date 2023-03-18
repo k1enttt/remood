@@ -1,5 +1,3 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:remood/app/data/models/diary.dart';
 import 'package:intl/intl.dart';
@@ -16,7 +14,7 @@ class DiaryCard extends StatelessWidget {
       width: _screenWidth * 0.723,
       height: _screenHeight * 0.167,
       decoration: BoxDecoration(
-        color: Color(diary.diaryColor),
+        color: diary.diaryColor,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
@@ -27,17 +25,14 @@ class DiaryCard extends StatelessWidget {
             Row(
               children: [
                 Icon(
-                  IconData(
-                    diary.icon,
-                    fontFamily: 'MaterialIcons',
-                  ),
-                  color: Color(diary.diaryColor).withOpacity(1),
+                  diary.icon,
+                  color: diary.diaryColor.withOpacity(1),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 7,
                 ),
                 Text(DateFormat('dd/MM/yyyy').format(diary.date),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.w600,
                     )),
               ],
