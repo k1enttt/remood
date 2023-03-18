@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:get/get.dart';
+import 'package:is_first_run/is_first_run.dart';
 import 'package:remood/app/core/values/app_colors.dart';
 import 'package:remood/app/core/values/assets_images.dart';
 import 'package:remood/app/core/values/text_style.dart';
@@ -48,16 +49,23 @@ class _LogInState extends State<LogIn> {
           tokenController.updateToken(
               token: data['data']['token'].toString().obs);
 
+          // User are logged in
+          await IsFirstRun.isFirstCall();
+
           Get.toNamed(AppRoutes.home);
           print(tokenController.token.value);
           print('Login successfully');
         } else {
+          // User are NOT logged in
+
           Get.back();
           ScaffoldMessenger.of(context)
               .showSnackBar(const SnackBar(content: Text("User not found")));
           print('failed');
         }
       } catch (e) {
+        // User are NOT logged in
+
         print(e.toString());
       }
     }

@@ -22,9 +22,15 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
       const Duration(seconds: 2),
-      () async => Get.offAndToNamed(await controller.isFirstOnboard() == true
-          ? AppRoutes.onboarding
-          : AppRoutes.loginScreen),
+      () async => Get.offAndToNamed(
+        await controller.isFirstOnboard() == true
+            ? AppRoutes.onboarding
+            :
+            // ((await Utils.isLoggedIn).value)
+            // ? AppRoutes.home
+            // :
+            AppRoutes.loginScreen,
+      ),
     );
   }
 
