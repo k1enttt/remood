@@ -60,8 +60,18 @@ class _ComfirmPasswordState extends State<ComfirmPassword> {
               obscureText: true,
               controller: passwordcontroller,
             ),
+            MyTextField(
+              hintText: "New password",
+              obscureText: true,
+              controller: passwordcontroller,
+            ),
             SizedBox(
               height: screenHeight * 0.031,
+            ),
+            MyTextField(
+              hintText: "Comfirm password",
+              obscureText: true,
+              controller: comfirmpasswordcontroller,
             ),
             MyTextField(
               hintText: "Comfirm password",

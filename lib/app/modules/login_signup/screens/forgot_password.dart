@@ -70,6 +70,11 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
               obscureText: false,
               controller: emailController,
             ),
+            MyTextField(
+              hintText: "Email",
+              obscureText: false,
+              controller: emailController,
+            ),
             SizedBox(
               height: screenHeight * 0.37,
             ),

@@ -59,8 +59,8 @@ class _CreateNewAccountState extends State<CreateNewAccount> {
           Get.toNamed(AppRoutes.login);
         } else {
           Get.back();
-          ScaffoldMessenger.of(context)
-              .showSnackBar(const SnackBar(content: Text("Registation failed")));
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text("Registation failed")));
         }
       } catch (e) {
         print(e);
@@ -134,17 +134,18 @@ class _CreateNewAccountState extends State<CreateNewAccount> {
                       passwordcontroller.text);
                 },
                 child: Container(
-                    height: screenHeight * 0.064,
-                    decoration: BoxDecoration(
-                      color: AppColors.mainColor,
-                      borderRadius: BorderRadius.circular(13),
+                  height: screenHeight * 0.064,
+                  decoration: BoxDecoration(
+                    color: AppColors.mainColor,
+                    borderRadius: BorderRadius.circular(13),
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Sign up",
+                      style: CustomTextStyle.TextLogin(Colors.white),
                     ),
-                    child: Center(
-                      child: Text(
-                        "Sign up",
-                        style: CustomTextStyle.TextLogin(Colors.white),
-                      ),
-                    )),
+                  ),
+                ),
               ),
             ),
           ],
