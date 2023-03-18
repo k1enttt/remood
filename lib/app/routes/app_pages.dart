@@ -38,7 +38,6 @@ import 'package:remood/app/modules/splash/splash_binding.dart';
 import 'package:remood/app/modules/suggestion/screens/suggestion_screen.dart';
 import 'package:remood/app/modules/suggestion/suggestion_binding.dart';
 import 'package:remood/app/modules/write_diary/diary_binding.dart';
-import 'package:remood/app/modules/write_diary/diary_controller.dart';
 import 'package:remood/app/modules/write_diary/screens/write_diary_screen.dart';
 import 'package:remood/app/modules/onboarding/onboarding_binding.dart';
 import 'package:remood/app/modules/onboarding/screens/onboarding_screen.dart';
@@ -67,7 +66,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: AppRoutes.writediary,
-      page: () => WriteDiaryScreen(),
+      page: () => const WriteDiaryScreen(),
       binding: DiaryBinding(),
     ),
     GetPage(
@@ -111,27 +110,27 @@ abstract class AppPages {
     GetPage(
       name: AppRoutes.loginScreen,
       page: () => const LogInScreen(),
-      binding: LogInBinding(),
+      bindings: [LogInBinding(), HomeBinding()],
     ),
     GetPage(
       name: AppRoutes.login,
       page: () => const LogIn(),
-      binding: LogInBinding(),
+      bindings: [LogInBinding(), HomeBinding()],
     ),
     GetPage(
       name: AppRoutes.createnewAccount,
       page: () => const CreateNewAccount(),
-      binding: LogInBinding(),
+      bindings: [LogInBinding(), HomeBinding()],
     ),
     GetPage(
       name: AppRoutes.forgotPassword,
       page: () => const ForgotPassWord(),
-      binding: LogInBinding(),
+      bindings: [LogInBinding(), HomeBinding()],
     ),
     GetPage(
       name: AppRoutes.comfirmPassword,
       page: () => const ComfirmPassword(),
-      binding: LogInBinding(),
+      bindings: [LogInBinding(), HomeBinding()],
     ),
     GetPage(
       name: AppRoutes.report,
