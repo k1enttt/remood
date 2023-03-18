@@ -2,63 +2,103 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:remood/app/core/values/app_colors.dart';
 import 'package:remood/app/core/values/assets_images.dart';
 import 'package:remood/app/core/values/text_style.dart';
 import 'package:remood/app/data/models/language.dart';
-import 'package:remood/app/data/models/setting_function.dart';
-
-import 'screens/language_screen.dart';
-import 'screens/manage_topics_screen.dart';
-import 'screens/notification_screen.dart';
-import 'screens/pinned_diaries_screen.dart';
-import 'screens/privacy_screen.dart';
-import 'screens/security_screen.dart';
-import 'screens/start_of_the_week_screen.dart';
+import 'package:remood/app/data/models/list_topic.dart';
+import 'package:remood/app/data/models/setting_button.dart';
+import 'package:remood/app/data/models/topic.dart';
+import 'package:remood/app/routes/app_routes.dart';
 
 class SettingController extends GetxController {
   // Main screen
-  var settingList = [
-    SettingFunc(
+  List<SettingButton> settingList = [
+    SettingButton(
       icon: Assets.calendar,
       title: "Start of the week",
-      screen: const StartOfTheWeekScreen(),
+      screen: AppRoutes.starOfTheWeek,
     ),
-    SettingFunc(
-        icon: Assets.language,
-        title: "Language",
-        screen: const LanguageScreen()),
-    SettingFunc(
+    SettingButton(
+        icon: Assets.language, title: "Language", screen: AppRoutes.language),
+    SettingButton(
       icon: Assets.notification,
       title: "Notification",
-      screen: const NotificationScreen(),
+      screen: AppRoutes.notification,
     ),
-    SettingFunc(
+    SettingButton(
       icon: Assets.dangerCircle,
       title: "Privacy",
-      screen: const PrivacyScreen(),
+      screen: AppRoutes.privacy,
     ),
-    SettingFunc(
+    SettingButton(
       icon: Assets.category,
       title: "Manage topics",
-      screen: const ManageTopicsScreen(),
+      screen: AppRoutes.manageTopics,
     ),
-    SettingFunc(
+    SettingButton(
       icon: Assets.category,
       title: "Pinned diaries",
-      screen: const PinnedDiariesScreen(),
+      screen: AppRoutes.pinnedDiaries,
     ),
-    SettingFunc(
+    SettingButton(
       icon: Assets.password,
       title: "Security",
-      screen: const SecurityScreen(),
+      screen: AppRoutes.security,
     ),
   ];
 
-  var helpList = [
-    SettingFunc(icon: Assets.call, title: "Contact Us", screen: null),
-    SettingFunc(icon: Assets.document, title: "FAQ", screen: null),
+  List<SettingButton> helpList = [
+    SettingButton(
+      icon: Assets.call,
+      title: "Contact Us",
+      screen: AppRoutes.contactUs,
+    ),
+    SettingButton(
+      icon: Assets.document,
+      title: "FAQ",
+      screen: AppRoutes.faq,
+    ),
   ];
 
+  List<SettingButton> topicList = [
+    SettingButton(
+      icon: CardTopic(
+        title: "",
+        TopicColor: AppColors.lightGreen18.value,
+        icons: Icons.work.codePoint,
+      ),
+      title: "Work",
+      screen: null,
+    ),
+    SettingButton(
+      icon: CardTopic(
+        title: "",
+        TopicColor: AppColors.lightRed22.value,
+        icons: Icons.favorite.codePoint,
+      ),
+      title: "Love",
+      screen: null,
+    ),
+    SettingButton(
+      icon: CardTopic(
+        title: "",
+        TopicColor: AppColors.lightOrange27.value,
+        icons: Icons.group.codePoint,
+      ),
+      title: "Friends",
+      screen: null,
+    ),
+    SettingButton(
+      icon: CardTopic(
+        title: "",
+        TopicColor: AppColors.lightPurple22.value,
+        icons: Icons.family_restroom.codePoint,
+      ),
+      title: "Family",
+      screen: null,
+    ),
+  ];
   var settingLabelStyle = CustomTextStyle.normalText(Colors.black);
 
   // First day of the week
