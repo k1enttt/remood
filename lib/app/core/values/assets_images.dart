@@ -19,8 +19,7 @@ class Assets {
   static const String language = 'assets/icons/language.png';
 
   // Images
-  static const String logoText = 'assets/images/logo-text.png';
-  static const String logo = 'assets/images/logo.png';
+  static const String logo = 'assets/images/logo-text.png';
   static const String onboardingBackground = 'assets/images/onboarding_bg.jpg';
   static const String onboardingBackground1 =
       'assets/images/onboarding_bg1.jpg';
@@ -35,13 +34,16 @@ class Assets {
   static const String onboardingImage3 =
       'assets/images/onboarding_img_report.png';
   static const String onboardingAlarm = 'assets/images/alarm.jpg';
-  static const String reportPercentage =
-      'assets/images/report-percentage-bg.png';
-  static const String settingUserAvt1 = 'assets/images/avt1.png';
-  static const String settingUserAvt2 = 'assets/images/avt2.png';
+  static const String reportPercentage = 'assets/images/percentagecircle.png';
+  static const String settingUserAvt = 'assets/images/setting_user_avt.png';
   static const String depressed = 'assets/icons/depressedface.png';
   static const String sad = 'assets/icons/sadface.png';
   static const String normal = 'assets/icons/normalface.png';
   static const String fun = 'assets/icons/smileface.png';
   static const String happy = 'assets/icons/happyface.png';
+  static const String pinnedDiary = 'assets/icons/pinned.png';
+  static const String isPinnedDiary = 'assets/icons/ispinned.png';
+  static const String google = 'assets/images/google.png';
+  static const String remoodSuggestion = 'assets/images/Remoodsuggestions.png';
+  static const String remoodLogo = 'assets/images/remoodlogo.png';
 }

@@ -13,7 +13,7 @@ class TimePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.find<SettingController>();
+    final controller = Get.find<SettingController>();
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,

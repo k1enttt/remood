@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,7 +12,6 @@ class HourPicker extends StatelessWidget {
   }) : super(key: key);
 
   final controller = Get.find<SettingController>();
-  double itemExtent = 40;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +20,7 @@ class HourPicker extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            log('hour--');
-            controller.hourController.animateTo(
-              controller.hourController.offset - itemExtent,
-              duration: const Duration(milliseconds: 80),
-              curve: Curves.easeInOut,
-            );
+            log('hour++');
           },
           child: Padding(
             padding: const EdgeInsets.all(6.0),
@@ -38,17 +31,17 @@ class HourPicker extends StatelessWidget {
           height: 47,
           width: 36,
           child: ListWheelScrollView.useDelegate(
-            controller: controller.hourController,
-            onSelectedItemChanged: (value) {},
-            itemExtent: itemExtent,
+            onSelectedItemChanged: (value) {
+              controller.updateHour(value);
+            },
+            itemExtent: 40,
             perspective: 0.005,
             physics: const FixedExtentScrollPhysics(),
             childDelegate: ListWheelChildBuilderDelegate(
-              childCount: 12,
+              childCount: 24,
               builder: (context, index) {
-                // hour from 1 to 12 and controller index from 0 to 11
                 return Hours(
-                  hours: index + 1,
+                  hours: index,
                 );
               },
             ),
@@ -56,12 +49,7 @@ class HourPicker extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            log('hour++');
-            controller.hourController.animateTo(
-              controller.hourController.offset + itemExtent,
-              duration: const Duration(milliseconds: 80),
-              curve: Curves.easeInOut,
-            );
+            log('hour--');
           },
           child: Padding(
             padding: const EdgeInsets.all(6.0),

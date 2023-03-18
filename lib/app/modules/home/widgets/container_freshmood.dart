@@ -58,8 +58,8 @@ class _FreshmoodPercentState extends State<FreshmoodPercent> {
                 child: Obx(
                   () => Column(
                     children: [
-                      const SizedBox(
-                        height: 9,
+                      SizedBox(
+                        height: 10,
                       ),
 // icon feelings
                       GestureDetector(
@@ -82,7 +82,7 @@ class _FreshmoodPercentState extends State<FreshmoodPercent> {
                                           : Assets.happy,
                         ),
                       ),
-                      const SizedBox(
+                      SizedBox(
                         height: 5,
                       ),
 // Slider

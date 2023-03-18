@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:remood/app/data/models/setting_button.dart';
 import 'package:remood/app/modules/freshmood/happy_screens/happy_screen_binding.dart';
 import 'package:remood/app/modules/freshmood/happy_screens/screens/happy_screen.dart';
 import 'package:remood/app/modules/freshmood/sad_screens/sad_screen_binding.dart';
@@ -7,6 +6,12 @@ import 'package:remood/app/modules/freshmood/sad_screens/screens/choose_screen.d
 import 'package:remood/app/modules/freshmood/sad_screens/screens/final_negative_screen.dart';
 import 'package:remood/app/modules/freshmood/sad_screens/screens/read_diary.dart';
 import 'package:remood/app/modules/freshmood/sad_screens/screens/sad_screen.dart';
+import 'package:remood/app/modules/login_signup/login_binding.dart';
+import 'package:remood/app/modules/login_signup/screens/comfirm_password.dart';
+import 'package:remood/app/modules/login_signup/screens/create_new_account.dart';
+import 'package:remood/app/modules/login_signup/screens/forgot_password.dart';
+import 'package:remood/app/modules/login_signup/screens/login.dart';
+import 'package:remood/app/modules/login_signup/screens/login_screen.dart';
 import 'package:remood/app/modules/read_diary/read_diary_binding.dart';
 import 'package:remood/app/modules/report/report_binding.dart';
 import 'package:remood/app/modules/report/screens/report_screen.dart';
@@ -26,10 +31,9 @@ import 'package:remood/app/modules/setting/screens/security_screen.dart';
 import 'package:remood/app/modules/setting/screens/setting_screen.dart';
 import 'package:remood/app/modules/setting/screens/start_of_the_week_screen.dart';
 import 'package:remood/app/modules/setting/setting_binding.dart';
-import 'package:remood/app/modules/splash/screens/splash_screen.dart';
-import 'package:remood/app/modules/splash/splash_binding.dart';
+import 'package:remood/app/modules/suggestion/screens/suggestion_screen.dart';
+import 'package:remood/app/modules/suggestion/suggestion_binding.dart';
 import 'package:remood/app/modules/write_diary/diary_binding.dart';
-import 'package:remood/app/modules/write_diary/diary_controller.dart';
 import 'package:remood/app/modules/write_diary/screens/write_diary_screen.dart';
 import 'package:remood/app/modules/onboarding/onboarding_binding.dart';
 import 'package:remood/app/modules/onboarding/screens/onboarding_screen.dart';
@@ -46,14 +50,7 @@ abstract class AppPages {
         HomeBinding(),
         ReadDiaryBinding(),
         ReportBinding(),
-        SettingBinding(),
-      ],
-    ),
-    GetPage(
-      name: AppRoutes.splash,
-      page: () => const SplashScreen(),
-      bindings: [
-        SplashBinding(),
+        SettingBinding()
       ],
     ),
     GetPage(
@@ -67,6 +64,11 @@ abstract class AppPages {
       bindings: [HappyBinding(), HomeBinding()],
     ),
     GetPage(
+      name: AppRoutes.suggestion,
+      page: () => const SuggestionScreen(),
+      binding: SuggestionBinding(),
+    ),
+    GetPage(
       name: AppRoutes.sadfreshmood,
       page: () => const SadScreen(),
       bindings: [SadBinding(), HomeBinding()],
@@ -77,11 +79,11 @@ abstract class AppPages {
         binding: SadBinding()),
     GetPage(
         name: AppRoutes.readDiaryFreshmood,
-        page: (() => const ReadDiaryFreshmood()),
+        page: (() => ReadDiaryFreshmood()),
         binding: SadBinding()),
     GetPage(
       name: AppRoutes.finalNegativeScreen,
-      page: () => const FinalNegativeScreen(),
+      page: () => FinalNegativeScreen(),
       binding: SadBinding(),
     ),
     GetPage(
@@ -90,19 +92,39 @@ abstract class AppPages {
       bindings: [OnboardingBinding(), SettingBinding()],
     ),
     GetPage(
+      name: AppRoutes.loginScreen,
+      page: () => const LogInScreen(),
+      binding: LogInBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.login,
+      page: () => const LogIn(),
+      binding: LogInBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.createnewAccount,
+      page: () => const CreateNewAccount(),
+      binding: LogInBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.forgotPassword,
+      page: () => const ForgotPassWord(),
+      binding: LogInBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.comfirmPassword,
+      page: () => const ComfirmPassword(),
+      binding: LogInBinding(),
+    ),
+    GetPage(
       name: AppRoutes.report,
       page: () => const ReportScreen(),
       binding: ReportBinding(),
     ),
     GetPage(
-      name: AppRoutes.splash,
-      page: () => const SplashScreen(),
-      binding: SplashBinding(),
-    ),
-    GetPage(
       name: AppRoutes.setting,
       page: () => const SettingScreen(),
-      bindings: [SettingBinding(), DiaryBinding()],
+      binding: SettingBinding(),
     ),
     GetPage(
       name: AppRoutes.language,
@@ -127,7 +149,7 @@ abstract class AppPages {
     GetPage(
       name: AppRoutes.manageTopics,
       page: () => const ManageTopicsScreen(),
-      bindings: [SettingBinding(), DiaryBinding()],
+      binding: SettingBinding(),
     ),
     GetPage(
       name: AppRoutes.pinnedDiaries,
@@ -152,7 +174,7 @@ abstract class AppPages {
     GetPage(
       name: AppRoutes.topicDetail,
       page: () => const TopicDetailScreen(),
-      bindings: [SettingBinding(), DiaryBinding()],
+      binding: SettingBinding(),
     ),
     GetPage(
       name: AppRoutes.createNewTopic,

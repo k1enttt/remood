@@ -46,11 +46,14 @@ class SheetReadDiaryFreshmood extends StatelessWidget {
               children: [
 // Icon
                 Icon(
-                  IconData(id == 0
-                      ? ListPositveDiary
-                          .listPositiveDiary[currentDiary.value].icon
-                      : ListNegativeDiary
-                          .listNegativeDiary[currentDiary.value].icon),
+                  IconData(
+                    id == 0
+                        ? ListPositveDiary
+                            .listPositiveDiary[currentDiary.value].icon
+                        : ListNegativeDiary
+                            .listNegativeDiary[currentDiary.value].icon,
+                    fontFamily: 'MaterialIcons',
+                  ),
                   color: id == 0
                       ? Color(ListPositveDiary
                               .listPositiveDiary[currentDiary.value].diaryColor)
@@ -150,10 +153,10 @@ class SheetReadDiaryFreshmood extends StatelessWidget {
             height: _screenHeight * 0.34,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
-              color: Color(id == 0
-                  ? ListPositveDiary
-                      .listPositiveDiary[currentDiary.value].diaryColor
-                  : ListNegativeDiary
+              color: id == 0
+                  ? Color(ListPositveDiary
+                      .listPositiveDiary[currentDiary.value].diaryColor)
+                  : Color(ListNegativeDiary
                       .listNegativeDiary[currentDiary.value].diaryColor),
             ),
             child: Padding(
