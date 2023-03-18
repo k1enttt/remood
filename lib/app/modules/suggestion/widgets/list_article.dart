@@ -21,10 +21,10 @@ class ListArticle extends StatelessWidget {
     return Swiper(
       itemCount: 3,
       itemBuilder: (context, index) =>
-          CardArticle(color: colors[index], index: index),
+          Expanded(child: CardArticle(color: colors[index], index: index)),
       layout: SwiperLayout.TINDER,
-      itemHeight: _screenHeight * 0.21,
-      itemWidth: _screenWidth * 0.83,
+      itemHeight: _screenHeight * 0.23,
+      itemWidth: _screenWidth * 0.9,
     );
   }
 }

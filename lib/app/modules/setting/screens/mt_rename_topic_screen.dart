@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:remood/app/core/values/app_colors.dart';
 import 'package:remood/app/core/values/text_style.dart';
+import 'package:remood/app/modules/setting/setting_binding.dart';
 import 'package:remood/app/modules/setting/setting_controller.dart';
 import 'package:remood/app/modules/setting/widgets/confirm_button.dart';
 import 'package:remood/app/modules/setting/widgets/stack_setting_appbar.dart';
+import 'package:remood/app/modules/write_diary/diary_controller.dart';
 
 class RenameTopicScreen extends StatelessWidget {
   const RenameTopicScreen({
@@ -15,6 +17,7 @@ class RenameTopicScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+    DiaryController diaryController = Get.find();
     SettingController settingController = Get.find();
 
     String appBarTitle = "Rename";
@@ -33,7 +36,7 @@ class RenameTopicScreen extends StatelessWidget {
             SizedBox(
               width: screenWidth * 0.872,
               child: TextField(
-                controller: settingController.topicName,
+                controller: diaryController.titleController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
@@ -47,17 +50,14 @@ class RenameTopicScreen extends StatelessWidget {
                       color: Colors.blue,
                     ),
                   ),
-                  hintText: "Enter your new name",
+                  hintText: settingController.currentTopic.value.label,
                   hintStyle: CustomTextStyle.normalText(AppColors.grey),
                 ),
                 style: const TextStyle(fontSize: 20),
               ),
             ),
-            // Save button
-            ConfirmButton(
-              label: "Save",
-              func: settingController.changeNameTopicSetting,
-            ),
+// Save button
+            const ConfirmButton(label: "Save"),
             SizedBox(
               height: screenHeight * 0.03,
             ),
