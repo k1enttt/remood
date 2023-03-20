@@ -6,16 +6,11 @@ import 'package:remood/app/modules/freshmood/sad_screens/screens/choose_screen.d
 import 'package:remood/app/modules/freshmood/sad_screens/screens/final_negative_screen.dart';
 import 'package:remood/app/modules/freshmood/sad_screens/screens/read_diary.dart';
 import 'package:remood/app/modules/freshmood/sad_screens/screens/sad_screen.dart';
-import 'package:remood/app/modules/login_signup/login_binding.dart';
-import 'package:remood/app/modules/login_signup/screens/comfirm_password.dart';
-import 'package:remood/app/modules/login_signup/screens/create_new_account.dart';
-import 'package:remood/app/modules/login_signup/screens/forgot_password.dart';
-import 'package:remood/app/modules/login_signup/screens/login.dart';
-import 'package:remood/app/modules/login_signup/screens/login_screen.dart';
 import 'package:remood/app/modules/onboarding/screens/setting_time_screen.dart';
 import 'package:remood/app/modules/read_diary/read_diary_binding.dart';
 import 'package:remood/app/modules/report/report_binding.dart';
 import 'package:remood/app/modules/report/screens/report_screen.dart';
+import 'package:remood/app/modules/setting/screens/change_password.dart';
 import 'package:remood/app/modules/setting/screens/contact_us_screen.dart';
 import 'package:remood/app/modules/setting/screens/faq_screen.dart';
 import 'package:remood/app/modules/setting/screens/feedback_screen.dart';
@@ -62,6 +57,7 @@ abstract class AppPages {
       page: () => const SplashScreen(),
       bindings: [
         SplashBinding(),
+        OnboardingBinding(),
       ],
     ),
     GetPage(
@@ -106,31 +102,6 @@ abstract class AppPages {
       name: AppRoutes.scheduleNotification,
       page: () => const SettingTimeScreen(),
       bindings: [OnboardingBinding(), SettingBinding()],
-    ),
-    GetPage(
-      name: AppRoutes.loginScreen,
-      page: () => const LogInScreen(),
-      bindings: [LogInBinding(), HomeBinding()],
-    ),
-    GetPage(
-      name: AppRoutes.login,
-      page: () => const LogIn(),
-      bindings: [LogInBinding(), HomeBinding()],
-    ),
-    GetPage(
-      name: AppRoutes.createnewAccount,
-      page: () => const CreateNewAccount(),
-      bindings: [LogInBinding(), HomeBinding()],
-    ),
-    GetPage(
-      name: AppRoutes.forgotPassword,
-      page: () => const ForgotPassWord(),
-      bindings: [LogInBinding(), HomeBinding()],
-    ),
-    GetPage(
-      name: AppRoutes.comfirmPassword,
-      page: () => const ComfirmPassword(),
-      bindings: [LogInBinding(), HomeBinding()],
     ),
     GetPage(
       name: AppRoutes.report,
@@ -222,5 +193,9 @@ abstract class AppPages {
       page: () => const ChangeColorTopicScreen(),
       bindings: [SettingBinding(), DiaryBinding()],
     ),
+    GetPage(
+        name: AppRoutes.changePassword,
+        page: (() => const ChangePassword()),
+        bindings: [SettingBinding(), HomeBinding()]),
   ];
 }

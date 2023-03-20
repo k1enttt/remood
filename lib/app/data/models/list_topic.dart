@@ -12,7 +12,7 @@ class ListTopic {
       icons: Icons.work.codePoint,
     ),
   ].obs;
-  final _mybox = Hive.box<List>('mybox');
+  final _mybox = Hive.box('mybox');
   void createInitialData() {
     topics = [
       // TODO: Thay thế icons = thứ tự của icon trong list-selected-icon-topics
@@ -40,7 +40,7 @@ class ListTopic {
   }
 
   void loadData() {
-    topics = _mybox.get("topic")!.cast<CardTopic>().obs;
+    topics.value = _mybox.get("topic")!.cast<CardTopic>();
   }
 
   void updateDatabase() {

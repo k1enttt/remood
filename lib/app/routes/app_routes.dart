@@ -13,11 +13,6 @@ abstract class AppRoutes {
       '/home/sadfreshmood/choose/readDiaryFreshmood';
   static const finalNegativeScreen =
       '/home/sadfreshmood/choose/readDiaryFreshmood/finalNegativeScreen';
-  static const loginScreen = "/login";
-  static const login = "/login/login";
-  static const forgotPassword = "/login/login/forgotpassword";
-  static const createnewAccount = "/login/login/createnewaccount";
-  static const comfirmPassword = "/login/login/forgotpassword/comfirmPassword";
   static const report = '/home/report';
   static const setting = '/home/setting';
   static const starOfTheWeek = '$setting/startOfTheWeek';
@@ -27,6 +22,7 @@ abstract class AppRoutes {
   static const manageTopics = '$setting/manageTopics';
   static const pinnedDiaries = '$setting/pinnedDiaries';
   static const security = '$setting/security';
+  static const changePassword = '$security/changepassword';
   static const contactUs = '$setting/contactUs';
   static const faq = '$setting/faq';
   static const feedback = '$setting/feedback';
