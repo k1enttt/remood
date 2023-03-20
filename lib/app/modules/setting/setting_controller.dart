@@ -62,12 +62,12 @@ class SettingController extends GetxController {
     if (_userbox.get("user") == null) {
       hiveUser.createInitialData();
     } else {
-      hiveBoxTopic.loadData();
+      hiveUser.loadData();
     }
     if (_settingbox.get("setting") == null) {
       hiveSetting.createInitialData();
     } else {
-      hiveBoxPinned.loadData();
+      hiveSetting.loadData();
     }
 
     // Observe data
@@ -117,11 +117,11 @@ class SettingController extends GetxController {
   var settingLabelStyle = CustomTextStyle.normalText(Colors.black);
 
   List<SettingButton> settingList = [
-    SettingButton(
-      icon: Assets.calendar,
-      label: "Start of the week",
-      screen: AppRoutes.starOfTheWeek,
-    ),
+    // SettingButton(
+    //   icon: Assets.calendar,
+    //   label: "Start of the week",
+    //   screen: AppRoutes.starOfTheWeek,
+    // ),
     SettingButton(
       icon: Assets.language,
       label: "Language",
@@ -313,8 +313,8 @@ class SettingController extends GetxController {
   // Languages list
   var lanList = [
     Language(label: "English", actived: false.obs),
-    Language(label: "Tiếng Việt", actived: false.obs),
-    Language(label: "日本語", actived: false.obs),
+    // Language(label: "Tiếng Việt", actived: false.obs),
+    // Language(label: "日本語", actived: false.obs),
   ];
 
   // Language label style (selected)
