@@ -1,8 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:remood/app/core/utils/utils.dart';
 import 'package:remood/app/core/values/app_colors.dart';
 import 'package:remood/app/core/values/assets_images.dart';
 import 'package:remood/app/data/models/setting_box.dart';
@@ -29,7 +27,7 @@ class ColButtonList extends StatelessWidget {
       children: List.generate(
         settingList.length,
         (index) => GestureDetector(
-          onTap: () async {
+          onTap: () {
             log(settingList[index].label);
 
             // Có screen thì chuyển đến screen đó
@@ -51,13 +49,6 @@ class ColButtonList extends StatelessWidget {
                 log(SettingBox.setting.hour.toString());
                 log(SettingBox.setting.minute.toString());
                 log(SettingBox.setting.ampm.toString());
-              }
-
-              // Feedback
-              if (settingList[index].screen == AppRoutes.feedback) {
-                // Check for internet
-                Utils.isInternetConnected(
-                    await InternetConnectionChecker().hasConnection);
               }
 
               Get.toNamed(settingList[index].screen);

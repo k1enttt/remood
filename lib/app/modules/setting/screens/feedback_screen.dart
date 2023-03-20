@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:remood/app/core/utils/utils.dart';
 import 'package:remood/app/core/values/app_colors.dart';
 import 'package:remood/app/core/values/text_style.dart';
 import 'package:remood/app/modules/setting/widgets/back_button_feedback.dart';
-import 'package:remood/app/modules/setting/widgets/container_no_internet.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class FeedbackScreen extends StatelessWidget {
@@ -14,7 +11,6 @@ class FeedbackScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(const Color(0x00000000))
       ..setNavigationDelegate(
         NavigationDelegate(
           onProgress: (int progress) {
@@ -32,21 +28,17 @@ class FeedbackScreen extends StatelessWidget {
         ),
       )
       ..loadRequest(Uri.parse(
-          'https://docs.google.com/forms/d/e/1FAIpQLSeSNcsUfjqMWFAVidx6d0oc_CvNK6hxmHSpEmdV9MGFGG6UjA/viewform?usp=pp_url'));
-    return Obx(
-      () => Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.backgroundPage,
-          title: Text("Feedback", style: CustomTextStyle.h2(Colors.black)),
-          centerTitle: true,
-          leading: const BackButtonFeedback(),
-          leadingWidth: 86,
-          toolbarHeight: 78,
-        ),
-        body: (Utils.isInternetConnected.value == true)
-            ? WebViewWidget(controller: controller)
-            : const ContainerNoInternet(),
+          'https://docs.google.com/forms/d/e/1FAIpQLSeSNcsUfjqMWFAVidx6d0oc_CvNK6hxmHSpEmdV9MGFGG6UjA/viewform?usp=sf_link'));
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.backgroundPage,
+        title: Text("Feedback", style: CustomTextStyle.h2(Colors.black)),
+        centerTitle: true,
+        leading: const BackButtonFeedback(),
+        leadingWidth: 86,
+        toolbarHeight: 78,
       ),
+      body: WebViewWidget(controller: controller),
     );
   }
 }

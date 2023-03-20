@@ -20,7 +20,7 @@ class HappyScreen extends StatefulWidget {
 }
 
 class _HappyScreenState extends State<HappyScreen> {
-  var apiUrl = "https://quote-generator-iks2.onrender.com/api/?number=1";
+  var apiUrl = "https://remood-oze7nwnjba-as.a.run.app/api/quotes/?number=1";
   Future<QuoteModel> fetchPost() async {
     final response = await http.get(Uri.parse(apiUrl));
     if (response.statusCode == 200) {
@@ -133,8 +133,7 @@ class _HappyScreenState extends State<HappyScreen> {
                           ),
                           const SizedBox(height: 8),
                           Padding(
-                            padding:
-                                EdgeInsets.only(left: screenWidth * 0.323),
+                            padding: EdgeInsets.only(left: screenWidth * 0.323),
                             child: Text(
                               "-${snapshot.data!.data!.quotes![0].author}-",
                               style: TextStyle(
