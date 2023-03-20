@@ -5,7 +5,7 @@ class SettingBox {
   static Setting setting = Setting(
     isSundayFirstDayOfWeek: false,
     language: 0,
-    isOnNotification: false,
+    isOnNotification: true,
     hour: 0,
     minute: 0,
     ampm: 0,
