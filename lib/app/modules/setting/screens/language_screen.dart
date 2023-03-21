@@ -34,7 +34,6 @@ class LanguageScreen extends StatelessWidget {
               ),
             ),
             // Save button
-            // TODO: Save the current selected value - Language choice
             ConfirmButton(
               label: "Save",
               func: saveLanguage,

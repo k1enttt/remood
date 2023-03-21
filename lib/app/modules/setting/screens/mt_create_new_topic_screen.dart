@@ -123,7 +123,7 @@ class CreateNewTopicScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Icon(
-                                listSelectedIcons.selectedIcons[index],
+                                ListSelectedIcons.selectedIcons[index],
                                 color:
                                     settingController.currentTopicIcon.value ==
                                             index
@@ -168,7 +168,7 @@ class CreateNewTopicScreen extends StatelessWidget {
                               width: screenWidth * 0.093,
                               height: screenHeight * 0.043,
                               decoration: BoxDecoration(
-                                color: listSelectedColor.selectedColors[index],
+                                color: ListSelectedColor.selectedColors[index],
                                 borderRadius: BorderRadius.circular(10),
                                 border:
                                     settingController.currentTopicColor.value ==

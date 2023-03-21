@@ -12,8 +12,6 @@ class SheetAddTopic extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    ListSelectedIcons listSelectedIcons = ListSelectedIcons();
-    ListSelectedColor listSelectedColor = ListSelectedColor();
     DiaryController addTopic = Get.find();
     return Container(
         height: screenHeight * 0.82,
@@ -108,7 +106,7 @@ class SheetAddTopic extends StatelessWidget {
                   return GestureDetector(
                     onTap: (() {
                       addTopic.changeIconTopic(
-                          index, listSelectedIcons.selectedIcons[index]);
+                          index, ListSelectedIcons.selectedIcons[index]);
                     }),
                     child: Obx(
                       () => Container(
@@ -121,7 +119,7 @@ class SheetAddTopic extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Icon(
-                          listSelectedIcons.selectedIcons[index],
+                          ListSelectedIcons.selectedIcons[index],
                           color: addTopic.currentIconTopic.value == index
                               ? addTopic.colorTopic.value.withOpacity(1)
                               : AppColors.darkBlue,
@@ -163,14 +161,14 @@ class SheetAddTopic extends StatelessWidget {
                   return GestureDetector(
                       onTap: () {
                         addTopic.changeColorTopic(
-                            index, listSelectedColor.selectedColors[index]);
+                            index, ListSelectedColor.selectedColors[index]);
                       },
                       child: Obx(
                         () => Container(
                           width: screenWidth * 0.093,
                           height: screenHeight * 0.043,
                           decoration: BoxDecoration(
-                            color: listSelectedColor.selectedColors[index],
+                            color: ListSelectedColor.selectedColors[index],
                             borderRadius: BorderRadius.circular(10),
                             border: addTopic.currentColorTopic.value == index
                                 ? Border.all(color: Colors.black)

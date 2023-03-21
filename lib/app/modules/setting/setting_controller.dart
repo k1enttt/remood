@@ -80,8 +80,9 @@ class SettingController extends GetxController {
 
   // Main screen
   TextEditingController nameController = TextEditingController();
-  RxString nickname = "cute pie".obs;
-  // RxString avatar = UserBox.user.avtURL.obs;
+  // RxString nickname = "cute pie".obs;
+  RxString nickname = UserBox.user.name.obs;
+  RxString avatar = UserBox.user.avtURL.obs;
   RxBool isEditableName = false.obs;
   List<String> avatars = [
     Assets.settingUserAvt1,
@@ -199,13 +200,13 @@ class SettingController extends GetxController {
   void changeIconIndex(int index) {
     currentTopicIcon(index);
 
-    addtopicIcon(listSelectedIcons.selectedIcons[index]);
+    addtopicIcon(ListSelectedIcons.selectedIcons[index]);
   }
 
   void changeColorIndex(int index) {
     currentTopicColor(index);
 
-    colorTopic(listSelectedColor.selectedColors[index]);
+    colorTopic(ListSelectedColor.selectedColors[index]);
   }
 
   void changeNameTopicSetting() {
@@ -224,7 +225,7 @@ class SettingController extends GetxController {
   void changeIconTopicSetting() {
     // Update local data
     ListTopic.topics[currentTopicIndex.value].icons =
-        listSelectedIcons.selectedIcons[currentTopicIcon.value].codePoint;
+        ListSelectedIcons.selectedIcons[currentTopicIcon.value].codePoint;
 
     // Update Topic-detail screen
     currentTopic(ListTopic.topics[currentTopicIndex.value]);
@@ -238,7 +239,7 @@ class SettingController extends GetxController {
   void changeColorTopicSetting() {
     // Update local data
     ListTopic.topics[currentTopicIndex.value].TopicColor =
-        listSelectedColor.selectedColors[currentTopicColor.value].value;
+        ListSelectedColor.selectedColors[currentTopicColor.value].value;
 
     // Update UI
     currentTopic(ListTopic.topics[currentTopicIndex.value]);
@@ -255,7 +256,7 @@ class SettingController extends GetxController {
     );
     ListTopic.topics.add(newTopic);
 
-    // Reset
+    // Reset text editing controller
     titleController.clear();
 
     hiveBoxTopic.updateDatabase();

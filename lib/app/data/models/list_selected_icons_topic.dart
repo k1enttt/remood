@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ListSelectedIcons {
-  List<IconData> selectedIcons = [
+  static const List<IconData> selectedIcons = [
     Icons.search,
     Icons.location_on,
     Icons.mail,

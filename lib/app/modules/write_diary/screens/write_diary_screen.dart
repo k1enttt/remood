@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:remood/app/core/values/app_colors.dart';
@@ -11,15 +10,10 @@ import 'package:remood/app/modules/write_diary/widgets/stack_topic.dart';
 import 'package:remood/app/routes/app_routes.dart';
 import 'package:intl/intl.dart';
 
-class WriteDiaryScreen extends StatefulWidget {
-  const WriteDiaryScreen({super.key});
-
-  @override
-  State<WriteDiaryScreen> createState() => _WriteDiaryScreenState();
-}
-
-class _WriteDiaryScreenState extends State<WriteDiaryScreen> {
+class WriteDiaryScreen extends StatelessWidget {
   final ValueNotifier<int> currentIndex = ValueNotifier(0);
+  WriteDiaryScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -87,10 +81,8 @@ class _WriteDiaryScreenState extends State<WriteDiaryScreen> {
                     if (diaryController.diaryNote.text.isEmpty) {
                       Get.back();
                     } else {
-                      if (diaryController.image == null) {
-                        diaryController.addDiary();
-                      } else {
-                        diaryController.addDiary();
+                      diaryController.addDiary();
+                      if (diaryController.image != null) {
                         diaryController.image = null;
                       }
 

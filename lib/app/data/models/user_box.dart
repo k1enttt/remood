@@ -4,7 +4,7 @@ import 'package:remood/app/data/models/user.dart';
 
 class UserBox {
   static User user = User(
-    name: "Untitled",
+    name: "cute pie",
     avtURL: Assets.settingUserAvt1,
   );
 

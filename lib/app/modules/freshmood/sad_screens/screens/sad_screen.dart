@@ -13,11 +13,10 @@ class SadScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ListTopic ListTopics = ListTopic();
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    HomeController changeAsset = Get.find();
-    SadController changeTopic = Get.find();
+    final HomeController changeAsset = Get.find();
+    final SadController changeTopic = Get.find();
     return Scaffold(
       backgroundColor: AppColors.backgroundPage,
       body: Column(

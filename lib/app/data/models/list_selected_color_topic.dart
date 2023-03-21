@@ -2,7 +2,7 @@ import 'package:flutter/animation.dart';
 import 'package:remood/app/core/values/app_colors.dart';
 
 class ListSelectedColor {
-  List<Color> selectedColors = [
+  static const List<Color> selectedColors = [
     AppColors.lightprimary250,
     AppColors.lightprimary204,
     AppColors.lightprimary94,

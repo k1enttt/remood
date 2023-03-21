@@ -36,8 +36,6 @@ class StartOfTheWeekScreen extends StatelessWidget {
             const ContainerFirstDayMonday(),
 
             // Save button
-// TODO: Save the selected value - first day of the week
-            /// Just save data into local storage when user tap Save button
             ConfirmButton(
               label: "Save",
               func: saveData,

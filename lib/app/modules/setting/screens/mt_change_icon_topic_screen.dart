@@ -58,10 +58,6 @@ class ChangeIconTopicScreen extends StatelessWidget {
                     onTap: () {
                       // Icon được bấm vào được cập nhật
                       changeIconTopic(index);
-
-                      // * TODO: Khởi tạo màu cho currentIconTopic (int - số thứ tự) là màu của currentTopic.icons (int - số codePoint)
-                      // currentTopic.icons =
-                      //     listSelectedIcons.selectedIcons[index].codePoint;
                     },
                     child: Obx(
                       () => Container(
@@ -75,7 +71,7 @@ class ChangeIconTopicScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Icon(
-                          listSelectedIcons.selectedIcons[index],
+                          ListSelectedIcons.selectedIcons[index],
                           // Icon được bấm vào thì icon được tô màu đậm
                           color: currentIconTopic.value == index
                               ? colorTopic.value.withOpacity(1)
@@ -92,8 +88,6 @@ class ChangeIconTopicScreen extends StatelessWidget {
             ),
 
 // Save button
-// TODO: ----Stuck----- Change-icon function
-// Parent page does not update when Get.back()
             ConfirmButton(
               label: "Save",
               func: changeIconTopicSetting,
